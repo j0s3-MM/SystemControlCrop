@@ -8,7 +8,7 @@ namespace SystemControlCropModel {
     private:
         String^ estado;
         String^ estado2;
-
+        String^ estado398767678585;
         int duracion;
         int cantidad;
         int potenciaConsumida;
