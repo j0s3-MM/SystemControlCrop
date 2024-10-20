@@ -13,3 +13,5 @@ void main(array <String^>^ args)
     frmPrincipal^ ventana = gcnew frmPrincipal(); // Corrección en la creación del formulario.
     Application::Run(ventana); // Se pasa la referencia del formulario sin el operador '%'.
 }
+
+//grober
