@@ -3,7 +3,7 @@
 namespace SystemControlCropModel {
 
     using namespace System;
-    ref class LucesLED :actuador
+    public ref class LucesLED :actuador
     {
     protected:
         int intensidadLuminosa;

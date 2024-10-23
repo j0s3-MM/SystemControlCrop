@@ -2,7 +2,7 @@
 namespace SystemControlCropModel {
 
     using namespace System;
-    ref class tuberia
+    public ref class tuberia
     {
     protected:
         String^ material;

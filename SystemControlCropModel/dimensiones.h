@@ -3,7 +3,7 @@ namespace SystemControlCropModel {
 
 	using namespace System;
 
-	ref class Dimensiones
+	public ref class Dimensiones
 	{
 
 	protected:

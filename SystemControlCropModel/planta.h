@@ -4,7 +4,7 @@ namespace SystemControlCropModel {
 
     using namespace System;
     using namespace System::Collections::Generic;
-    ref class planta
+    public ref class planta
     {
     protected:
         int idplanta;

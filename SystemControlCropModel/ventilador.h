@@ -3,7 +3,7 @@
 namespace SystemControlCropModel {
 
     using namespace System;
-    ref class Ventilador :actuador
+    public ref class Ventilador :actuador
     {
     protected:
         String^ direccion;

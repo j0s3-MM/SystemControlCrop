@@ -3,7 +3,7 @@
 namespace SystemControlCropModel {
 
     using namespace System;
-    ref class bomba :actuador {
+    public ref class bomba :actuador {
     protected:
         int caudal;
 

@@ -111,15 +111,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="SensorController.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="SensorController.cpp" />
+    <ClCompile Include="usuarioController.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SystemControlCropModel\SystemControlCropModel.vcxproj">
       <Project>{82211329-ed72-464f-88b7-a9751f3c944f}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="usuarioController.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

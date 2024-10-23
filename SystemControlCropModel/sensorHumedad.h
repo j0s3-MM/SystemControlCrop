@@ -3,7 +3,7 @@
 namespace SystemControlCropModel {
 
     using namespace System;
-    ref class sensorHumedad :Sensor
+    public ref class sensorHumedad :Sensor
     {
     protected:
         int idSensor;

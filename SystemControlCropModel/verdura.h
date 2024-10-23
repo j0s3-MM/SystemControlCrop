@@ -3,7 +3,7 @@
 namespace SystemControlCropModel {
 
     using namespace System;
-    ref class Verdura :planta
+    public ref class Verdura :planta
     {
     protected:
         String^ tipoVerdura;

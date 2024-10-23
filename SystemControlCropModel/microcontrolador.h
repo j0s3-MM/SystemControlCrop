@@ -5,7 +5,7 @@
 namespace SystemControlCropModel {
 	using namespace System;
 	using namespace System::Collections::Generic;
-	ref class microcontrolador {
+	public ref class microcontrolador {
 	protected:
 		List<Sensor^>^ listasensores;
 		List<actuador^>^ listactuadores;

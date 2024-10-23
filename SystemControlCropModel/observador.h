@@ -5,7 +5,7 @@ namespace SystemControlCropModel {
 
 	using namespace System;
 
-	ref class observador : Usuario {
+	public ref class observador : Usuario {
 	private:
 		String^ cargo;
 

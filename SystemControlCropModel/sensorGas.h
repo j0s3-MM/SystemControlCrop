@@ -3,7 +3,7 @@
 namespace SystemControlCropModel {
 
     using namespace System;
-    ref class sensorGas :Sensor
+    public ref class sensorGas :Sensor
     {
     protected:
         double resistencia;

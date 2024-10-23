@@ -5,7 +5,7 @@ namespace SystemControlCropModel {
 
 	using namespace System;
 
-	ref class Administrador :Usuario
+	public ref class Administrador :Usuario
 	{
 	protected:
 		invernadero^ invernaderos;

@@ -5,7 +5,7 @@ namespace SystemControlCropModel {
 
 	using namespace System;
 
-	ref class CintaRiego : Componentes {
+	public ref class CintaRiego : Componentes {
 	private:
 		int numObstrucciones;
 		int longitud;

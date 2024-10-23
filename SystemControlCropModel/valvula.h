@@ -4,7 +4,7 @@ namespace SystemControlCropModel {
 
 	using namespace System;
 
-	ref class valvula:actuador
+	public ref class valvula:actuador
 	{
 	private:
 		String^ material;

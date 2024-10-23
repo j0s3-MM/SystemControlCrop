@@ -4,7 +4,7 @@ namespace SystemControlCropModel {
 
 	using namespace System;
 
-	ref class Componentes {
+	public ref class Componentes {
 	private:
 		int idComponente;
 	public:

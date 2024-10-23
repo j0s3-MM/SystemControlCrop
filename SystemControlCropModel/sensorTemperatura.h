@@ -3,7 +3,7 @@
 namespace SystemControlCropModel {
 
     using namespace System;
-    ref class sensorTemperatura :Sensor
+    public ref class sensorTemperatura :Sensor
     {
     protected:
         String^ rangopOperacion;

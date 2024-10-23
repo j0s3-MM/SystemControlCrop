@@ -4,7 +4,7 @@ namespace SystemControlCropModel {
 
 	using namespace System;
 
-	ref class Usuario {
+	public ref class Usuario {
 	private:
 		int idPersona;
 		String^ nombre;

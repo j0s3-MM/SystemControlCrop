@@ -2,7 +2,7 @@
 namespace SystemControlCropModel {
 
     using namespace System;
-    ref class Requerimiento
+    public ref class Requerimiento
     {
     protected:
         int cantidadAgua;

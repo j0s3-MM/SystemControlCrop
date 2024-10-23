@@ -3,7 +3,7 @@ namespace SystemControlCropModel {
 
     using namespace System;
 
-    ref class actuador
+    public ref class actuador
     {
     private:
         String^ estado;

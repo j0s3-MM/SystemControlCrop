@@ -8,9 +8,12 @@ namespace SystemControlCropView {
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
+	using namespace System::Collections::Generic;
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	//using namespace SystemControlCropController;
+	using namespace SystemControlCropModel;
 
 	/// <summary>
 	/// Resumen de frmPrincipal
@@ -196,6 +199,17 @@ namespace SystemControlCropView {
 	private: System::Void registrarse_Click(System::Object^ sender, System::EventArgs^ e) {
 		newUser^ ventanaRegistro = gcnew newUser();
 		ventanaRegistro->Show();
+		//String^ username = this->textBox1->Text;
+		//String^ contrasena = this->textBox2->Text;
+		//int verificado = verificarUser(username,contrasena);
+		//if (verificado) {
+		//	newUser^ ventanaRegistro = gcnew newUser();
+		//	ventanaRegistro->Show();
+		//}
+		//else {
+		//	MessageBox::Show("Acceso Denegado, Usuario no encontrado", "Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+		//	return; // Salir del evento si no se encontro usuario registrado
+		//}	
 	}
 	private: System::Void accesadmin_Click(System::Object^ sender, System::EventArgs^ e) {		
 		AccessAdmin^ ventanaAdmin = gcnew AccessAdmin();

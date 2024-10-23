@@ -6,7 +6,7 @@ namespace SystemControlCropModel {
 	using namespace System;
 	using namespace System::Collections::Generic;
 
-	ref class invernadero {
+	public ref class invernadero {
 	private:
 		String^ ubicacion;
 		String^ tipoDeSuelo;

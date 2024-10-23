@@ -4,7 +4,7 @@ namespace SystemControlCropModel {
 
 	using namespace System;
 
-	ref class Sensor
+	public ref class Sensor
 	{
 	protected:
 
