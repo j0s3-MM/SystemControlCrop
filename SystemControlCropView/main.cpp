@@ -14,4 +14,3 @@ void main(array <String^>^ args)
     Application::Run(ventana); // Se pasa la referencia del formulario sin el operador '%'.
 }
 
-//grober

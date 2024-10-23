@@ -114,14 +114,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AccessAdmin.cpp" />
+    <ClCompile Include="Actuadores.cpp" />
+    <ClCompile Include="componentes.cpp" />
+    <ClCompile Include="cultivoInfo.cpp" />
+    <ClCompile Include="descripcionCultivo.cpp" />
     <ClCompile Include="editAdminInvernadero.cpp" />
+    <ClCompile Include="editInvernadero.cpp" />
     <ClCompile Include="frmPrincipal.cpp" />
     <ClCompile Include="Invernadero.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="newInvernadero.cpp" />
     <ClCompile Include="newUser.cpp" />
-    <ClCompile Include="SensorGas.cpp" />
-    <ClCompile Include="SensorHumedad.cpp" />
-    <ClCompile Include="SensorTemperatura.cpp" />
+    <ClCompile Include="sensores.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SystemControlCropController\SystemControlCropController.vcxproj">
@@ -142,7 +146,22 @@
     <ClInclude Include="AccessAdmin.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Actuadores.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="componentes.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="cultivoInfo.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="descripcionCultivo.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="editAdminInvernadero.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="editInvernadero.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="frmPrincipal.h">
@@ -151,16 +170,13 @@
     <ClInclude Include="Invernadero.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="newInvernadero.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="newUser.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="SensorGas.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="SensorHumedad.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="SensorTemperatura.h">
+    <ClInclude Include="sensores.h">
       <FileType>CppForm</FileType>
     </ClInclude>
   </ItemGroup>
@@ -168,8 +184,23 @@
     <EmbeddedResource Include="AccessAdmin.resx">
       <DependentUpon>AccessAdmin.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Actuadores.resx">
+      <DependentUpon>Actuadores.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="componentes.resx">
+      <DependentUpon>componentes.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cultivoInfo.resx">
+      <DependentUpon>cultivoInfo.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="descripcionCultivo.resx">
+      <DependentUpon>descripcionCultivo.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="editAdminInvernadero.resx">
       <DependentUpon>editAdminInvernadero.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="editInvernadero.resx">
+      <DependentUpon>editInvernadero.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.h</DependentUpon>
@@ -177,17 +208,14 @@
     <EmbeddedResource Include="Invernadero.resx">
       <DependentUpon>Invernadero.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="newInvernadero.resx">
+      <DependentUpon>newInvernadero.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="newUser.resx">
       <DependentUpon>newUser.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SensorGas.resx">
-      <DependentUpon>SensorGas.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SensorHumedad.resx">
-      <DependentUpon>SensorHumedad.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SensorTemperatura.resx">
-      <DependentUpon>SensorTemperatura.h</DependentUpon>
+    <EmbeddedResource Include="sensores.resx">
+      <DependentUpon>sensores.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

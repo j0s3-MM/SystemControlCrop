@@ -1,4 +1,7 @@
 #pragma once
+#include "Invernadero.h"
+#include "newUser.h"
+#include "AccessAdmin.h"
 
 namespace SystemControlCropView {
 
@@ -41,9 +44,12 @@ namespace SystemControlCropView {
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::Button^ button2;
-	private: System::Windows::Forms::Button^ button1;
-	private: System::Windows::Forms::Button^ button3;
+	private: System::Windows::Forms::Button^ acceder;
+	private: System::Windows::Forms::Button^ registrarse;
+	private: System::Windows::Forms::Button^ accesadmin;
+
+
+
 
 	private:
 		/// <summary>
@@ -59,21 +65,21 @@ namespace SystemControlCropView {
 		void InitializeComponent(void)
 		{
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->acceder = (gcnew System::Windows::Forms::Button());
+			this->registrarse = (gcnew System::Windows::Forms::Button());
 			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
-			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->button3 = (gcnew System::Windows::Forms::Button());
-			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->accesadmin = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// groupBox1
 			// 
-			this->groupBox1->Controls->Add(this->button2);
-			this->groupBox1->Controls->Add(this->button1);
+			this->groupBox1->Controls->Add(this->acceder);
+			this->groupBox1->Controls->Add(this->registrarse);
 			this->groupBox1->Controls->Add(this->textBox2);
 			this->groupBox1->Controls->Add(this->textBox1);
 			this->groupBox1->Controls->Add(this->label3);
@@ -84,6 +90,64 @@ namespace SystemControlCropView {
 			this->groupBox1->TabIndex = 0;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Login";
+			// 
+			// acceder
+			// 
+			this->acceder->BackColor = System::Drawing::SystemColors::MenuHighlight;
+			this->acceder->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->acceder->Location = System::Drawing::Point(241, 298);
+			this->acceder->Name = L"acceder";
+			this->acceder->Size = System::Drawing::Size(103, 32);
+			this->acceder->TabIndex = 5;
+			this->acceder->Text = L"Acceder";
+			this->acceder->UseVisualStyleBackColor = false;
+			this->acceder->Click += gcnew System::EventHandler(this, &frmPrincipal::button2_Click);
+			// 
+			// registrarse
+			// 
+			this->registrarse->Location = System::Drawing::Point(72, 299);
+			this->registrarse->Name = L"registrarse";
+			this->registrarse->Size = System::Drawing::Size(103, 31);
+			this->registrarse->TabIndex = 4;
+			this->registrarse->Text = L"Registrarse";
+			this->registrarse->UseVisualStyleBackColor = true;
+			this->registrarse->Click += gcnew System::EventHandler(this, &frmPrincipal::registrarse_Click);
+			// 
+			// textBox2
+			// 
+			this->textBox2->Location = System::Drawing::Point(77, 207);
+			this->textBox2->Name = L"textBox2";
+			this->textBox2->Size = System::Drawing::Size(267, 26);
+			this->textBox2->TabIndex = 3;
+			// 
+			// textBox1
+			// 
+			this->textBox1->Location = System::Drawing::Point(77, 98);
+			this->textBox1->Name = L"textBox1";
+			this->textBox1->Size = System::Drawing::Size(267, 26);
+			this->textBox1->TabIndex = 2;
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label3->Location = System::Drawing::Point(73, 154);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(102, 20);
+			this->label3->TabIndex = 1;
+			this->label3->Text = L"Contraseña";
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label2->Location = System::Drawing::Point(73, 54);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(71, 20);
+			this->label2->TabIndex = 0;
+			this->label2->Text = L"Usuario";
 			// 
 			// label1
 			// 
@@ -97,78 +161,23 @@ namespace SystemControlCropView {
 			this->label1->TabIndex = 1;
 			this->label1->Text = L"TERRA";
 			// 
-			// label2
+			// accesadmin
 			// 
-			this->label2->AutoSize = true;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(73, 54);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(71, 20);
-			this->label2->TabIndex = 0;
-			this->label2->Text = L"Usuario";
-			// 
-			// label3
-			// 
-			this->label3->AutoSize = true;
-			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(73, 154);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(102, 20);
-			this->label3->TabIndex = 1;
-			this->label3->Text = L"Contraseña";
-			// 
-			// textBox1
-			// 
-			this->textBox1->Location = System::Drawing::Point(77, 98);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(267, 26);
-			this->textBox1->TabIndex = 2;
-			// 
-			// textBox2
-			// 
-			this->textBox2->Location = System::Drawing::Point(77, 207);
-			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(267, 26);
-			this->textBox2->TabIndex = 3;
-			// 
-			// button1
-			// 
-			this->button1->Location = System::Drawing::Point(72, 299);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(103, 31);
-			this->button1->TabIndex = 4;
-			this->button1->Text = L"Registrarse";
-			this->button1->UseVisualStyleBackColor = true;
-			// 
-			// button3
-			// 
-			this->button3->ForeColor = System::Drawing::SystemColors::MenuHighlight;
-			this->button3->Location = System::Drawing::Point(528, 613);
-			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(267, 28);
-			this->button3->TabIndex = 2;
-			this->button3->Text = L"Acceder Como Administrador";
-			this->button3->UseVisualStyleBackColor = true;
-			// 
-			// button2
-			// 
-			this->button2->BackColor = System::Drawing::SystemColors::MenuHighlight;
-			this->button2->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->button2->Location = System::Drawing::Point(241, 298);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(103, 32);
-			this->button2->TabIndex = 5;
-			this->button2->Text = L"Acceder";
-			this->button2->UseVisualStyleBackColor = false;
+			this->accesadmin->ForeColor = System::Drawing::SystemColors::MenuHighlight;
+			this->accesadmin->Location = System::Drawing::Point(528, 613);
+			this->accesadmin->Name = L"accesadmin";
+			this->accesadmin->Size = System::Drawing::Size(267, 28);
+			this->accesadmin->TabIndex = 2;
+			this->accesadmin->Text = L"Acceder Como Administrador";
+			this->accesadmin->UseVisualStyleBackColor = true;
+			this->accesadmin->Click += gcnew System::EventHandler(this, &frmPrincipal::accesadmin_Click);
 			// 
 			// frmPrincipal
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1531, 845);
-			this->Controls->Add(this->button3);
+			this->Controls->Add(this->accesadmin);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->groupBox1);
 			this->Name = L"frmPrincipal";
@@ -180,5 +189,17 @@ namespace SystemControlCropView {
 
 		}
 #pragma endregion
-	};
+	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+		Invernadero^ ventanaInvernadero = gcnew Invernadero();
+		ventanaInvernadero->Show();
+	}
+	private: System::Void registrarse_Click(System::Object^ sender, System::EventArgs^ e) {
+		newUser^ ventanaRegistro = gcnew newUser();
+		ventanaRegistro->Show();
+	}
+	private: System::Void accesadmin_Click(System::Object^ sender, System::EventArgs^ e) {		
+		AccessAdmin^ ventanaAdmin = gcnew AccessAdmin();
+		ventanaAdmin->Show();
+	}
+};
 }

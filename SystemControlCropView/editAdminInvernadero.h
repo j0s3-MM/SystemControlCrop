@@ -1,5 +1,10 @@
 #pragma once
-
+#include "newInvernadero.h"
+#include "editInvernadero.h"
+#include "Componentes.h"
+#include "Actuadores.h"
+#include "cultivoInfo.h"
+#include "sensores.h"
 namespace SystemControlCropView {
 
 	using namespace System;
@@ -57,21 +62,21 @@ namespace SystemControlCropView {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column5;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column6;
-	private: System::Windows::Forms::ToolStripMenuItem^ temperaturaToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ humedadToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ gasToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ tuberiasToolStripMenuItem;
+
+
+
+
 	private: System::Windows::Forms::ToolStripMenuItem^ tanqueToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ cintaRiegoToolStripMenuItem;
+
 
 	private: System::Windows::Forms::Button^ button4;
 	private: System::Windows::Forms::ComboBox^ comboBox2;
 	private: System::Windows::Forms::ComboBox^ comboBox1;
 	private: System::Windows::Forms::ToolStripMenuItem^ informacionToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ bombaToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ ventiladorToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ ledsToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ valvulaToolStripMenuItem;
+
+
+
+
 	private: System::Windows::Forms::ToolStripMenuItem^ graficasToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ estadisticasToolStripMenuItem;
 
@@ -91,9 +96,23 @@ namespace SystemControlCropView {
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->sensoresToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->componentesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->tanqueToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->cultivoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->informacionToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->graficasToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->estadisticasToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->actuadoresToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->button4 = (gcnew System::Windows::Forms::Button());
+			this->comboBox2 = (gcnew System::Windows::Forms::ComboBox());
+			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -101,29 +120,6 @@ namespace SystemControlCropView {
 			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column6 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->button2 = (gcnew System::Windows::Forms::Button());
-			this->button3 = (gcnew System::Windows::Forms::Button());
-			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
-			this->comboBox2 = (gcnew System::Windows::Forms::ComboBox());
-			this->button4 = (gcnew System::Windows::Forms::Button());
-			this->temperaturaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->humedadToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->gasToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->tuberiasToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->tanqueToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->cintaRiegoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->informacionToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->bombaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->ventiladorToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->ledsToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->valvulaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->graficasToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->estadisticasToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->menuStrip1->SuspendLayout();
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
@@ -145,10 +141,6 @@ namespace SystemControlCropView {
 			// 
 			// sensoresToolStripMenuItem
 			// 
-			this->sensoresToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
-				this->temperaturaToolStripMenuItem,
-					this->humedadToolStripMenuItem, this->gasToolStripMenuItem
-			});
 			this->sensoresToolStripMenuItem->Name = L"sensoresToolStripMenuItem";
 			this->sensoresToolStripMenuItem->Size = System::Drawing::Size(99, 29);
 			this->sensoresToolStripMenuItem->Text = L"Sensores";
@@ -156,13 +148,18 @@ namespace SystemControlCropView {
 			// 
 			// componentesToolStripMenuItem
 			// 
-			this->componentesToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
-				this->tuberiasToolStripMenuItem,
-					this->tanqueToolStripMenuItem, this->cintaRiegoToolStripMenuItem
-			});
+			this->componentesToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->tanqueToolStripMenuItem });
 			this->componentesToolStripMenuItem->Name = L"componentesToolStripMenuItem";
 			this->componentesToolStripMenuItem->Size = System::Drawing::Size(140, 29);
 			this->componentesToolStripMenuItem->Text = L"Componentes";
+			this->componentesToolStripMenuItem->Click += gcnew System::EventHandler(this, &editAdminInvernadero::componentesToolStripMenuItem_Click);
+			// 
+			// tanqueToolStripMenuItem
+			// 
+			this->tanqueToolStripMenuItem->Name = L"tanqueToolStripMenuItem";
+			this->tanqueToolStripMenuItem->Size = System::Drawing::Size(270, 34);
+			this->tanqueToolStripMenuItem->Text = L"Tanque";
+			this->tanqueToolStripMenuItem->Click += gcnew System::EventHandler(this, &editAdminInvernadero::tanqueToolStripMenuItem_Click);
 			// 
 			// cultivoToolStripMenuItem
 			// 
@@ -173,16 +170,33 @@ namespace SystemControlCropView {
 			this->cultivoToolStripMenuItem->Name = L"cultivoToolStripMenuItem";
 			this->cultivoToolStripMenuItem->Size = System::Drawing::Size(83, 29);
 			this->cultivoToolStripMenuItem->Text = L"Cultivo";
+			this->cultivoToolStripMenuItem->Click += gcnew System::EventHandler(this, &editAdminInvernadero::cultivoToolStripMenuItem_Click);
+			// 
+			// informacionToolStripMenuItem
+			// 
+			this->informacionToolStripMenuItem->Name = L"informacionToolStripMenuItem";
+			this->informacionToolStripMenuItem->Size = System::Drawing::Size(270, 34);
+			this->informacionToolStripMenuItem->Text = L"informacion";
+			this->informacionToolStripMenuItem->Click += gcnew System::EventHandler(this, &editAdminInvernadero::informacionToolStripMenuItem_Click);
+			// 
+			// graficasToolStripMenuItem
+			// 
+			this->graficasToolStripMenuItem->Name = L"graficasToolStripMenuItem";
+			this->graficasToolStripMenuItem->Size = System::Drawing::Size(270, 34);
+			this->graficasToolStripMenuItem->Text = L"Graficas";
+			// 
+			// estadisticasToolStripMenuItem
+			// 
+			this->estadisticasToolStripMenuItem->Name = L"estadisticasToolStripMenuItem";
+			this->estadisticasToolStripMenuItem->Size = System::Drawing::Size(270, 34);
+			this->estadisticasToolStripMenuItem->Text = L"Estadisticas";
 			// 
 			// actuadoresToolStripMenuItem
 			// 
-			this->actuadoresToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {
-				this->bombaToolStripMenuItem,
-					this->ventiladorToolStripMenuItem, this->ledsToolStripMenuItem, this->valvulaToolStripMenuItem
-			});
 			this->actuadoresToolStripMenuItem->Name = L"actuadoresToolStripMenuItem";
 			this->actuadoresToolStripMenuItem->Size = System::Drawing::Size(118, 29);
 			this->actuadoresToolStripMenuItem->Text = L"Actuadores";
+			this->actuadoresToolStripMenuItem->Click += gcnew System::EventHandler(this, &editAdminInvernadero::actuadoresToolStripMenuItem_Click);
 			// 
 			// groupBox1
 			// 
@@ -204,6 +218,94 @@ namespace SystemControlCropView {
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Invernadero";
 			// 
+			// button4
+			// 
+			this->button4->Location = System::Drawing::Point(311, 448);
+			this->button4->Name = L"button4";
+			this->button4->Size = System::Drawing::Size(90, 36);
+			this->button4->TabIndex = 10;
+			this->button4->Text = L"Nuevo";
+			this->button4->UseVisualStyleBackColor = true;
+			this->button4->Click += gcnew System::EventHandler(this, &editAdminInvernadero::button4_Click);
+			// 
+			// comboBox2
+			// 
+			this->comboBox2->FormattingEnabled = true;
+			this->comboBox2->Location = System::Drawing::Point(420, 51);
+			this->comboBox2->Name = L"comboBox2";
+			this->comboBox2->Size = System::Drawing::Size(121, 28);
+			this->comboBox2->TabIndex = 9;
+			// 
+			// comboBox1
+			// 
+			this->comboBox1->FormattingEnabled = true;
+			this->comboBox1->Location = System::Drawing::Point(634, 48);
+			this->comboBox1->Name = L"comboBox1";
+			this->comboBox1->Size = System::Drawing::Size(169, 28);
+			this->comboBox1->TabIndex = 8;
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Location = System::Drawing::Point(322, 51);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(79, 20);
+			this->label3->TabIndex = 7;
+			this->label3->Text = L"Ubicacion";
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Location = System::Drawing::Point(575, 51);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(53, 20);
+			this->label2->TabIndex = 6;
+			this->label2->Text = L"cultivo";
+			// 
+			// textBox1
+			// 
+			this->textBox1->Location = System::Drawing::Point(127, 48);
+			this->textBox1->Name = L"textBox1";
+			this->textBox1->Size = System::Drawing::Size(169, 26);
+			this->textBox1->TabIndex = 5;
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(51, 48);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(23, 20);
+			this->label1->TabIndex = 4;
+			this->label1->Text = L"Id";
+			// 
+			// button3
+			// 
+			this->button3->Location = System::Drawing::Point(840, 48);
+			this->button3->Name = L"button3";
+			this->button3->Size = System::Drawing::Size(81, 36);
+			this->button3->TabIndex = 3;
+			this->button3->Text = L"Buscar";
+			this->button3->UseVisualStyleBackColor = true;
+			// 
+			// button2
+			// 
+			this->button2->Location = System::Drawing::Point(598, 448);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(73, 36);
+			this->button2->TabIndex = 2;
+			this->button2->Text = L"Eliminar";
+			this->button2->UseVisualStyleBackColor = true;
+			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(466, 448);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(75, 36);
+			this->button1->TabIndex = 1;
+			this->button1->Text = L"Editar";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &editAdminInvernadero::button1_Click);
+			// 
 			// dataGridView1
 			// 
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
@@ -211,12 +313,13 @@ namespace SystemControlCropView {
 				this->Column1,
 					this->Column2, this->Column3, this->Column4, this->Column5, this->Column6
 			});
-			this->dataGridView1->Location = System::Drawing::Point(55, 129);
+			this->dataGridView1->Location = System::Drawing::Point(24, 136);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowHeadersWidth = 62;
 			this->dataGridView1->RowTemplate->Height = 28;
-			this->dataGridView1->Size = System::Drawing::Size(891, 289);
+			this->dataGridView1->Size = System::Drawing::Size(966, 289);
 			this->dataGridView1->TabIndex = 0;
+			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &editAdminInvernadero::dataGridView1_CellContentClick);
 			// 
 			// Column1
 			// 
@@ -260,170 +363,6 @@ namespace SystemControlCropView {
 			this->Column6->Name = L"Column6";
 			this->Column6->Width = 150;
 			// 
-			// button1
-			// 
-			this->button1->Location = System::Drawing::Point(466, 448);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(75, 36);
-			this->button1->TabIndex = 1;
-			this->button1->Text = L"Editar";
-			this->button1->UseVisualStyleBackColor = true;
-			// 
-			// button2
-			// 
-			this->button2->Location = System::Drawing::Point(598, 448);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(73, 36);
-			this->button2->TabIndex = 2;
-			this->button2->Text = L"Eliminar";
-			this->button2->UseVisualStyleBackColor = true;
-			// 
-			// button3
-			// 
-			this->button3->Location = System::Drawing::Point(840, 48);
-			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(81, 36);
-			this->button3->TabIndex = 3;
-			this->button3->Text = L"Buscar";
-			this->button3->UseVisualStyleBackColor = true;
-			// 
-			// label1
-			// 
-			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(51, 48);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(23, 20);
-			this->label1->TabIndex = 4;
-			this->label1->Text = L"Id";
-			// 
-			// textBox1
-			// 
-			this->textBox1->Location = System::Drawing::Point(127, 48);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(169, 26);
-			this->textBox1->TabIndex = 5;
-			// 
-			// label2
-			// 
-			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(575, 51);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(53, 20);
-			this->label2->TabIndex = 6;
-			this->label2->Text = L"cultivo";
-			// 
-			// label3
-			// 
-			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(322, 51);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(79, 20);
-			this->label3->TabIndex = 7;
-			this->label3->Text = L"Ubicacion";
-			// 
-			// comboBox1
-			// 
-			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Location = System::Drawing::Point(634, 48);
-			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(169, 28);
-			this->comboBox1->TabIndex = 8;
-			// 
-			// comboBox2
-			// 
-			this->comboBox2->FormattingEnabled = true;
-			this->comboBox2->Location = System::Drawing::Point(420, 51);
-			this->comboBox2->Name = L"comboBox2";
-			this->comboBox2->Size = System::Drawing::Size(121, 28);
-			this->comboBox2->TabIndex = 9;
-			// 
-			// button4
-			// 
-			this->button4->Location = System::Drawing::Point(311, 448);
-			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(90, 36);
-			this->button4->TabIndex = 10;
-			this->button4->Text = L"Nuevo";
-			this->button4->UseVisualStyleBackColor = true;
-			// 
-			// temperaturaToolStripMenuItem
-			// 
-			this->temperaturaToolStripMenuItem->Name = L"temperaturaToolStripMenuItem";
-			this->temperaturaToolStripMenuItem->Size = System::Drawing::Size(270, 34);
-			this->temperaturaToolStripMenuItem->Text = L"Temperatura";
-			// 
-			// humedadToolStripMenuItem
-			// 
-			this->humedadToolStripMenuItem->Name = L"humedadToolStripMenuItem";
-			this->humedadToolStripMenuItem->Size = System::Drawing::Size(270, 34);
-			this->humedadToolStripMenuItem->Text = L"Humedad";
-			// 
-			// gasToolStripMenuItem
-			// 
-			this->gasToolStripMenuItem->Name = L"gasToolStripMenuItem";
-			this->gasToolStripMenuItem->Size = System::Drawing::Size(270, 34);
-			this->gasToolStripMenuItem->Text = L"Gas";
-			// 
-			// tuberiasToolStripMenuItem
-			// 
-			this->tuberiasToolStripMenuItem->Name = L"tuberiasToolStripMenuItem";
-			this->tuberiasToolStripMenuItem->Size = System::Drawing::Size(270, 34);
-			this->tuberiasToolStripMenuItem->Text = L"Tuberias";
-			// 
-			// tanqueToolStripMenuItem
-			// 
-			this->tanqueToolStripMenuItem->Name = L"tanqueToolStripMenuItem";
-			this->tanqueToolStripMenuItem->Size = System::Drawing::Size(270, 34);
-			this->tanqueToolStripMenuItem->Text = L"Tanque";
-			// 
-			// cintaRiegoToolStripMenuItem
-			// 
-			this->cintaRiegoToolStripMenuItem->Name = L"cintaRiegoToolStripMenuItem";
-			this->cintaRiegoToolStripMenuItem->Size = System::Drawing::Size(270, 34);
-			this->cintaRiegoToolStripMenuItem->Text = L"CintaRiego";
-			// 
-			// informacionToolStripMenuItem
-			// 
-			this->informacionToolStripMenuItem->Name = L"informacionToolStripMenuItem";
-			this->informacionToolStripMenuItem->Size = System::Drawing::Size(270, 34);
-			this->informacionToolStripMenuItem->Text = L"informacion";
-			// 
-			// bombaToolStripMenuItem
-			// 
-			this->bombaToolStripMenuItem->Name = L"bombaToolStripMenuItem";
-			this->bombaToolStripMenuItem->Size = System::Drawing::Size(270, 34);
-			this->bombaToolStripMenuItem->Text = L"bomba";
-			// 
-			// ventiladorToolStripMenuItem
-			// 
-			this->ventiladorToolStripMenuItem->Name = L"ventiladorToolStripMenuItem";
-			this->ventiladorToolStripMenuItem->Size = System::Drawing::Size(270, 34);
-			this->ventiladorToolStripMenuItem->Text = L"ventilador";
-			// 
-			// ledsToolStripMenuItem
-			// 
-			this->ledsToolStripMenuItem->Name = L"ledsToolStripMenuItem";
-			this->ledsToolStripMenuItem->Size = System::Drawing::Size(270, 34);
-			this->ledsToolStripMenuItem->Text = L"Leds";
-			// 
-			// valvulaToolStripMenuItem
-			// 
-			this->valvulaToolStripMenuItem->Name = L"valvulaToolStripMenuItem";
-			this->valvulaToolStripMenuItem->Size = System::Drawing::Size(270, 34);
-			this->valvulaToolStripMenuItem->Text = L"Valvula";
-			// 
-			// graficasToolStripMenuItem
-			// 
-			this->graficasToolStripMenuItem->Name = L"graficasToolStripMenuItem";
-			this->graficasToolStripMenuItem->Size = System::Drawing::Size(270, 34);
-			this->graficasToolStripMenuItem->Text = L"Graficas";
-			// 
-			// estadisticasToolStripMenuItem
-			// 
-			this->estadisticasToolStripMenuItem->Name = L"estadisticasToolStripMenuItem";
-			this->estadisticasToolStripMenuItem->Size = System::Drawing::Size(270, 34);
-			this->estadisticasToolStripMenuItem->Text = L"Estadisticas";
-			// 
 			// editAdminInvernadero
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
@@ -445,6 +384,35 @@ namespace SystemControlCropView {
 		}
 #pragma endregion
 	private: System::Void sensoresToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		sensores^ ventanaSensor = gcnew sensores();
+		ventanaSensor->Show();
+	}
+	private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+	}
+	private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+		newInvernadero^ ventanaNuevoInvernadero = gcnew newInvernadero();
+		ventanaNuevoInvernadero->Show();
+	}
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		editInvernadero^ ventanaeditInvernadero = gcnew editInvernadero();
+		ventanaeditInvernadero->Show();
+	}
+	private: System::Void actuadoresToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		Actuadores^ ventanaActuador = gcnew Actuadores();
+		ventanaActuador->Show();
+	}
+	private: System::Void componentesToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		
+	}
+	private: System::Void cultivoToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void informacionToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		cultivoInfo^ ventanaCultivo = gcnew cultivoInfo();
+		ventanaCultivo->Show();
+	}
+	private: System::Void tanqueToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		componentes^ ventanaComponente = gcnew componentes();
+		ventanaComponente->Show();
 	}
 };
 }
