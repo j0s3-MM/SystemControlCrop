@@ -1,3 +1,3 @@
-Javier; 20222211
-libra; 20205475
-pedro; 20215589
+Javier;20222211
+libra;20205475
+pedro;20215589

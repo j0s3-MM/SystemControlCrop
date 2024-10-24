@@ -1,0 +1,3 @@
+Lima;arenoso;tomate;1001;potasio;100
+Lima;arcilloso;fresa;1002;potasio;200
+Ica;seco;cebolla;1003;calcio;300

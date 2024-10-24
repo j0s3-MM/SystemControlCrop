@@ -12,7 +12,7 @@ namespace SystemControlCropView {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
-	//using namespace SystemControlCropController;
+	using namespace SystemControlCropController;
 	using namespace SystemControlCropModel;
 
 	/// <summary>
@@ -193,23 +193,24 @@ namespace SystemControlCropView {
 		}
 #pragma endregion
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-		Invernadero^ ventanaInvernadero = gcnew Invernadero();
-		ventanaInvernadero->Show();
+		String^ username = this->textBox1->Text;
+		String^ contrasena = this->textBox2->Text;
+		int verificado = 0;
+		UsuarioController^ usuarioController = gcnew UsuarioController();
+		verificado = usuarioController->verificarUser(username,contrasena);
+		if (verificado) {
+			Invernadero^ ventanaInvernadero = gcnew Invernadero();
+			ventanaInvernadero->Show();
+		}
+		else {
+			MessageBox::Show("Acceso Denegado, Usuario no encontrado", "Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			return; // Salir del evento si no se encontro usuario registrado
+		}
+
 	}
 	private: System::Void registrarse_Click(System::Object^ sender, System::EventArgs^ e) {
 		newUser^ ventanaRegistro = gcnew newUser();
 		ventanaRegistro->Show();
-		//String^ username = this->textBox1->Text;
-		//String^ contrasena = this->textBox2->Text;
-		//int verificado = verificarUser(username,contrasena);
-		//if (verificado) {
-		//	newUser^ ventanaRegistro = gcnew newUser();
-		//	ventanaRegistro->Show();
-		//}
-		//else {
-		//	MessageBox::Show("Acceso Denegado, Usuario no encontrado", "Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
-		//	return; // Salir del evento si no se encontro usuario registrado
-		//}	
 	}
 	private: System::Void accesadmin_Click(System::Object^ sender, System::EventArgs^ e) {		
 		AccessAdmin^ ventanaAdmin = gcnew AccessAdmin();

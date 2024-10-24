@@ -157,7 +157,7 @@ namespace SystemControlCropView {
 			// tanqueToolStripMenuItem
 			// 
 			this->tanqueToolStripMenuItem->Name = L"tanqueToolStripMenuItem";
-			this->tanqueToolStripMenuItem->Size = System::Drawing::Size(270, 34);
+			this->tanqueToolStripMenuItem->Size = System::Drawing::Size(170, 34);
 			this->tanqueToolStripMenuItem->Text = L"Tanque";
 			this->tanqueToolStripMenuItem->Click += gcnew System::EventHandler(this, &editAdminInvernadero::tanqueToolStripMenuItem_Click);
 			// 
@@ -175,20 +175,20 @@ namespace SystemControlCropView {
 			// informacionToolStripMenuItem
 			// 
 			this->informacionToolStripMenuItem->Name = L"informacionToolStripMenuItem";
-			this->informacionToolStripMenuItem->Size = System::Drawing::Size(270, 34);
+			this->informacionToolStripMenuItem->Size = System::Drawing::Size(209, 34);
 			this->informacionToolStripMenuItem->Text = L"informacion";
 			this->informacionToolStripMenuItem->Click += gcnew System::EventHandler(this, &editAdminInvernadero::informacionToolStripMenuItem_Click);
 			// 
 			// graficasToolStripMenuItem
 			// 
 			this->graficasToolStripMenuItem->Name = L"graficasToolStripMenuItem";
-			this->graficasToolStripMenuItem->Size = System::Drawing::Size(270, 34);
+			this->graficasToolStripMenuItem->Size = System::Drawing::Size(209, 34);
 			this->graficasToolStripMenuItem->Text = L"Graficas";
 			// 
 			// estadisticasToolStripMenuItem
 			// 
 			this->estadisticasToolStripMenuItem->Name = L"estadisticasToolStripMenuItem";
-			this->estadisticasToolStripMenuItem->Size = System::Drawing::Size(270, 34);
+			this->estadisticasToolStripMenuItem->Size = System::Drawing::Size(209, 34);
 			this->estadisticasToolStripMenuItem->Text = L"Estadisticas";
 			// 
 			// actuadoresToolStripMenuItem
@@ -231,6 +231,7 @@ namespace SystemControlCropView {
 			// comboBox2
 			// 
 			this->comboBox2->FormattingEnabled = true;
+			this->comboBox2->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Lima", L"Ica" });
 			this->comboBox2->Location = System::Drawing::Point(420, 51);
 			this->comboBox2->Name = L"comboBox2";
 			this->comboBox2->Size = System::Drawing::Size(121, 28);
@@ -239,6 +240,7 @@ namespace SystemControlCropView {
 			// comboBox1
 			// 
 			this->comboBox1->FormattingEnabled = true;
+			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Fresa", L"Tomate", L"Cebolla" });
 			this->comboBox1->Location = System::Drawing::Point(634, 48);
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(169, 28);

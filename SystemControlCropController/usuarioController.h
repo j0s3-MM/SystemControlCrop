@@ -1,5 +1,5 @@
 #pragma once
-namespace SystemControlCropCcontroller {
+namespace SystemControlCropController {
 	using namespace System;
 	using namespace System::Collections::Generic;
 	using namespace SystemControlCropModel;

@@ -111,6 +111,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="InvernaderoController.cpp" />
     <ClCompile Include="usuarioController.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -119,6 +120,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="InvernaderoController.h" />
     <ClInclude Include="usuarioController.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
