@@ -59,14 +59,14 @@ namespace SystemControlCropView {
 		void InitializeComponent(void)
 		{
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
-			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -85,28 +85,39 @@ namespace SystemControlCropView {
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Login";
 			// 
-			// label1
+			// button2
 			// 
-			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 36, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label1->ForeColor = System::Drawing::Color::IndianRed;
-			this->label1->Location = System::Drawing::Point(511, 53);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(284, 82);
-			this->label1->TabIndex = 1;
-			this->label1->Text = L"TERRA";
+			this->button2->BackColor = System::Drawing::SystemColors::MenuHighlight;
+			this->button2->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->button2->Location = System::Drawing::Point(241, 298);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(103, 32);
+			this->button2->TabIndex = 5;
+			this->button2->Text = L"Acceder";
+			this->button2->UseVisualStyleBackColor = false;
 			// 
-			// label2
+			// button1
 			// 
-			this->label2->AutoSize = true;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(73, 54);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(71, 20);
-			this->label2->TabIndex = 0;
-			this->label2->Text = L"Usuario";
+			this->button1->Location = System::Drawing::Point(72, 299);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(103, 31);
+			this->button1->TabIndex = 4;
+			this->button1->Text = L"Registrarse";
+			this->button1->UseVisualStyleBackColor = true;
+			// 
+			// textBox2
+			// 
+			this->textBox2->Location = System::Drawing::Point(77, 207);
+			this->textBox2->Name = L"textBox2";
+			this->textBox2->Size = System::Drawing::Size(267, 26);
+			this->textBox2->TabIndex = 3;
+			// 
+			// textBox1
+			// 
+			this->textBox1->Location = System::Drawing::Point(77, 98);
+			this->textBox1->Name = L"textBox1";
+			this->textBox1->Size = System::Drawing::Size(267, 26);
+			this->textBox1->TabIndex = 2;
 			// 
 			// label3
 			// 
@@ -119,28 +130,28 @@ namespace SystemControlCropView {
 			this->label3->TabIndex = 1;
 			this->label3->Text = L"Contraseña";
 			// 
-			// textBox1
+			// label2
 			// 
-			this->textBox1->Location = System::Drawing::Point(77, 98);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(267, 26);
-			this->textBox1->TabIndex = 2;
+			this->label2->AutoSize = true;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label2->Location = System::Drawing::Point(73, 54);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(71, 20);
+			this->label2->TabIndex = 0;
+			this->label2->Text = L"Usuario";
 			// 
-			// textBox2
+			// label1
 			// 
-			this->textBox2->Location = System::Drawing::Point(77, 207);
-			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(267, 26);
-			this->textBox2->TabIndex = 3;
-			// 
-			// button1
-			// 
-			this->button1->Location = System::Drawing::Point(72, 299);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(103, 31);
-			this->button1->TabIndex = 4;
-			this->button1->Text = L"Registrarse";
-			this->button1->UseVisualStyleBackColor = true;
+			this->label1->AutoSize = true;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 36, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label1->ForeColor = System::Drawing::Color::IndianRed;
+			this->label1->Location = System::Drawing::Point(511, 53);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(284, 82);
+			this->label1->TabIndex = 1;
+			this->label1->Text = L"TERRA";
 			// 
 			// button3
 			// 
@@ -151,17 +162,7 @@ namespace SystemControlCropView {
 			this->button3->TabIndex = 2;
 			this->button3->Text = L"Acceder Como Administrador";
 			this->button3->UseVisualStyleBackColor = true;
-			// 
-			// button2
-			// 
-			this->button2->BackColor = System::Drawing::SystemColors::MenuHighlight;
-			this->button2->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->button2->Location = System::Drawing::Point(241, 298);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(103, 32);
-			this->button2->TabIndex = 5;
-			this->button2->Text = L"Acceder";
-			this->button2->UseVisualStyleBackColor = false;
+			this->button3->Click += gcnew System::EventHandler(this, &frmPrincipal::button3_Click);
 			// 
 			// frmPrincipal
 			// 
@@ -180,5 +181,8 @@ namespace SystemControlCropView {
 
 		}
 #pragma endregion
-	};
+	private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	}
+};
 }
