@@ -6,13 +6,14 @@ invernadero::invernadero() {
 	this->listaComponentes = gcnew List<Componentes^>();
 }
 
-invernadero::invernadero(String^ ubicacion, String^ tipoDeSuelo, String^ cultivo, int IdLote, int SuperficieSustrato, Dimensiones^ dimensiones, List<Componentes^>^ listaComponentes) {
+invernadero::invernadero(String^ ubicacion, String^ tipoDeSuelo, String^ cultivo, int IdLote, String^ Sustrato, int area, Dimensiones^ dimensiones, List<Componentes^>^ listaComponentes) {
 
 	this->ubicacion = ubicacion;
 	this->tipoDeSuelo = tipoDeSuelo;
 	this->cultivo = cultivo;
 	this->IdLote = IdLote;
-	this->SuperficieSustrato = SuperficieSustrato;
+	this->Sustrato = Sustrato;
+	this->area = area;
 	this->dimensiones = dimensiones;
 	this->listaComponentes = listaComponentes;
 
@@ -45,11 +46,17 @@ void invernadero::setIdLote(int IdLote) {
 	this->IdLote = IdLote;
 }
 
-int invernadero::getSuperficieSustrato() {
-	return this->SuperficieSustrato;
+String^ invernadero::getSustrato() {
+	return this->Sustrato;
 }
-void invernadero::setSuperficieSustrato(int SuperficieSustrato) {
-	this->SuperficieSustrato = SuperficieSustrato;
+void invernadero::setSustrato(String^ Sustrato) {
+	this->Sustrato = Sustrato;
+}
+int invernadero::getArea() {
+	return this->area;
+}
+void invernadero::setArea(int area) {
+	this->area = area;
 }
 
 Dimensiones^ invernadero::getDimensiones() {

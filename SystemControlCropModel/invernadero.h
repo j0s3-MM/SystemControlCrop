@@ -12,13 +12,14 @@ namespace SystemControlCropModel {
 		String^ tipoDeSuelo;
 		String^ cultivo;
 		int IdLote;
-		int SuperficieSustrato;
+		String^ Sustrato;
+		int area;
 		Dimensiones^ dimensiones;
 		List<Componentes^>^ listaComponentes;
 
 	public:
 		invernadero();
-		invernadero(String^ ubicacion, String^ tipoDeSuelo, String^ cultivo, int IdLote, int SuperficieSustrato, Dimensiones^ dimensiones, List<Componentes^>^ listaComponentes);
+		invernadero(String^ ubicacion, String^ tipoDeSuelo, String^ cultivo, int IdLote, String^ Sustrato, int area, Dimensiones^ dimensiones, List<Componentes^>^ listaComponentes);
 
 		String^ getUbicacion();
 		void setUbicacion(String^ ubicacion);
@@ -28,8 +29,12 @@ namespace SystemControlCropModel {
 		void setCultivo(String^ cultivo);
 		int getIdLote();
 		void setIdLote(int IdLote);
-		int getSuperficieSustrato();
-		void setSuperficieSustrato(int SuperficieSustrato);
+		String^ getSustrato();
+		void setSustrato(String^ Sustrato);
+		int getArea();
+		void setArea(int area);
+
+
 		Dimensiones^ getDimensiones();
 		void setDimensiones(Dimensiones^ dimensiones);
 		List<Componentes^>^ getListaComponentes();

@@ -7,9 +7,17 @@ namespace SystemControlCropController {
 	public ref class InvernaderoController{
 	public:
 		InvernaderoController();
-		int buscarInvernaderos(String^ id, String^ cultivo, String^ ubicacion);
-		void editarInvernadero(String^ ubicacion, String^ suelo, String^ cultivo, int idlote, String^ sustrato, int area);
-		invernadero^ buscarIdEditar(int idlote);
+
+		List<invernadero^>^ buscarAll();
+		List<invernadero^>^ buscarUbicacionxCultivo(String^ Ubicacionbuscar, String^ cultivobuscar);
+		List<invernadero^>^ buscarId(int idLotebuscar );
+		void agregarInvernadero(String^ ubicacion, String^ tipoDeSuelo, String^ cultivo, int IdLote, String^ Sustrato, int area);
+		void escribirArchivo(List<invernadero^>^ listaInvernaderos);
+		void eliminarInvernadero(int idLote);
+		void InvernaderoController::editarInvernadero(String^ ubicacion, String^ tipoDeSuelo, String^ cultivo, int IdLote, String^ Sustrato, int area);
+		invernadero^ buscarIdEditar(int idLote);
+
+
 
 	};
 }

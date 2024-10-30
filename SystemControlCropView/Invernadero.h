@@ -5,9 +5,12 @@ namespace SystemControlCropView {
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
+	using namespace System::Collections::Generic;
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace SystemControlCropController;
+	using namespace SystemControlCropModel;
 
 	/// <summary>
 	/// Resumen de Invernadero
@@ -35,7 +38,8 @@ namespace SystemControlCropView {
 			}
 		}
 	private: System::Windows::Forms::GroupBox^ groupBox1;
-	private: System::Windows::Forms::DataGridView^ dataGridView1;
+	private: System::Windows::Forms::DataGridView^ dgvInvernadero;
+
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
@@ -65,26 +69,26 @@ namespace SystemControlCropView {
 		void InitializeComponent(void)
 		{
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->dgvInvernadero = (gcnew System::Windows::Forms::DataGridView());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column6 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->informacionToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->graficasToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->estadisticasToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->Column6 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->informacionToolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->groupBox1->SuspendLayout();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvInvernadero))->BeginInit();
 			this->menuStrip1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// groupBox1
 			// 
-			this->groupBox1->Controls->Add(this->dataGridView1);
+			this->groupBox1->Controls->Add(this->dgvInvernadero);
 			this->groupBox1->Location = System::Drawing::Point(183, 57);
 			this->groupBox1->Name = L"groupBox1";
 			this->groupBox1->Size = System::Drawing::Size(938, 547);
@@ -92,19 +96,19 @@ namespace SystemControlCropView {
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Invernadero";
 			// 
-			// dataGridView1
+			// dgvInvernadero
 			// 
-			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
+			this->dgvInvernadero->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dgvInvernadero->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
 				this->Column1,
 					this->Column2, this->Column3, this->Column4, this->Column5, this->Column6
 			});
-			this->dataGridView1->Location = System::Drawing::Point(18, 59);
-			this->dataGridView1->Name = L"dataGridView1";
-			this->dataGridView1->RowHeadersWidth = 62;
-			this->dataGridView1->RowTemplate->Height = 28;
-			this->dataGridView1->Size = System::Drawing::Size(914, 386);
-			this->dataGridView1->TabIndex = 0;
+			this->dgvInvernadero->Location = System::Drawing::Point(18, 59);
+			this->dgvInvernadero->Name = L"dgvInvernadero";
+			this->dgvInvernadero->RowHeadersWidth = 62;
+			this->dgvInvernadero->RowTemplate->Height = 28;
+			this->dgvInvernadero->Size = System::Drawing::Size(914, 386);
+			this->dgvInvernadero->TabIndex = 0;
 			// 
 			// Column1
 			// 
@@ -141,6 +145,13 @@ namespace SystemControlCropView {
 			this->Column5->Name = L"Column5";
 			this->Column5->Width = 150;
 			// 
+			// Column6
+			// 
+			this->Column6->HeaderText = L"Area";
+			this->Column6->MinimumWidth = 8;
+			this->Column6->Name = L"Column6";
+			this->Column6->Width = 150;
+			// 
 			// menuStrip1
 			// 
 			this->menuStrip1->GripMargin = System::Windows::Forms::Padding(2, 2, 0, 2);
@@ -165,26 +176,19 @@ namespace SystemControlCropView {
 			// graficasToolStripMenuItem
 			// 
 			this->graficasToolStripMenuItem->Name = L"graficasToolStripMenuItem";
-			this->graficasToolStripMenuItem->Size = System::Drawing::Size(270, 34);
+			this->graficasToolStripMenuItem->Size = System::Drawing::Size(210, 34);
 			this->graficasToolStripMenuItem->Text = L"Graficas";
 			// 
 			// estadisticasToolStripMenuItem
 			// 
 			this->estadisticasToolStripMenuItem->Name = L"estadisticasToolStripMenuItem";
-			this->estadisticasToolStripMenuItem->Size = System::Drawing::Size(270, 34);
+			this->estadisticasToolStripMenuItem->Size = System::Drawing::Size(210, 34);
 			this->estadisticasToolStripMenuItem->Text = L"Estadisticas";
-			// 
-			// Column6
-			// 
-			this->Column6->HeaderText = L"Area";
-			this->Column6->MinimumWidth = 8;
-			this->Column6->Name = L"Column6";
-			this->Column6->Width = 150;
 			// 
 			// informacionToolStripMenuItem1
 			// 
 			this->informacionToolStripMenuItem1->Name = L"informacionToolStripMenuItem1";
-			this->informacionToolStripMenuItem1->Size = System::Drawing::Size(270, 34);
+			this->informacionToolStripMenuItem1->Size = System::Drawing::Size(210, 34);
 			this->informacionToolStripMenuItem1->Text = L"Informacion";
 			// 
 			// Invernadero
@@ -197,7 +201,7 @@ namespace SystemControlCropView {
 			this->Name = L"Invernadero";
 			this->Text = L"Invernadero";
 			this->groupBox1->ResumeLayout(false);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvInvernadero))->EndInit();
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
 			this->ResumeLayout(false);
@@ -205,5 +209,27 @@ namespace SystemControlCropView {
 
 		}
 #pragma endregion
+		//revisar si esta bien
+		public: void mostrarGrilla() {
+
+			//List<invernadero^> listaInvernaderos = gcnew List<invernadero^>();
+			List<invernadero^>^ listaInvernaderos;
+			InvernaderoController^ invernaderoController = gcnew InvernaderoController();
+			listaInvernaderos = invernaderoController->buscarAll();
+
+			this->dgvInvernadero->Rows->Clear(); //eliminar de sus filas todo-borrar
+			for (int i = 0; i < listaInvernaderos->Count; i++) { //recorrer los elementos de la lista
+				invernadero^ Invernadero = listaInvernaderos[i];
+				array<String^>^ filaGrilla = gcnew array<String^>(5);
+				filaGrilla[0] = Invernadero->getUbicacion();
+				filaGrilla[1] = Invernadero->getTipoDeSuelo();
+				filaGrilla[2] = Invernadero->getCultivo();
+				filaGrilla[3] = Convert::ToString(Invernadero->getIdLote());
+				filaGrilla[4] = Invernadero->getSustrato();
+				filaGrilla[5] = Convert::ToString(Invernadero->getArea());
+
+				this->dgvInvernadero->Rows->Add(filaGrilla);
+			}
+		}
 	};
 }

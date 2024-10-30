@@ -6,9 +6,12 @@ namespace SystemControlCropView {
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
+	using namespace System::Collections::Generic;
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace SystemControlCropController;
+	using namespace SystemControlCropModel;
 
 	/// <summary>
 	/// Resumen de AccessAdmin
@@ -101,9 +104,19 @@ namespace SystemControlCropView {
 
 		}
 #pragma endregion
-	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		editAdminInvernadero^ ventanaInvernadero = gcnew editAdminInvernadero();
-		ventanaInvernadero->Show();
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e){
+		String^ keypass = this->textBox1->Text;
+		int verificado = 0;
+		adminController^ AdminController = gcnew adminController();
+		verificado = AdminController->verificarKeypass(keypass);
+		if (verificado) {
+			editAdminInvernadero^ ventanaAdminInvernadero = gcnew editAdminInvernadero();
+			ventanaAdminInvernadero->Show();
+		}
+		else {
+			MessageBox::Show("Acceso Denegado, Usuario no encontrado", "Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			return; // Salir del evento si no se encontro usuario registrado
+		}
 	}
 	};
 }

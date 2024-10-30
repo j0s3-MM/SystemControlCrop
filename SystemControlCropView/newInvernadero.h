@@ -5,9 +5,13 @@ namespace SystemControlCropView {
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
+	using namespace System::Collections::Generic;
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace SystemControlCropController;
+	using namespace SystemControlCropModel;
+
 
 	/// <summary>
 	/// Resumen de newInvernadero
@@ -41,12 +45,18 @@ namespace SystemControlCropView {
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::Label^ label6;
-	private: System::Windows::Forms::TextBox^ textBox1;
-	private: System::Windows::Forms::TextBox^ textBox2;
-	private: System::Windows::Forms::TextBox^ textBox3;
-	private: System::Windows::Forms::TextBox^ textBox4;
-	private: System::Windows::Forms::TextBox^ textBox5;
-	private: System::Windows::Forms::TextBox^ textBox6;
+	private: System::Windows::Forms::TextBox^ textUbicacion;
+
+	private: System::Windows::Forms::TextBox^ textSuelo;
+	private: System::Windows::Forms::TextBox^ textCultivo;
+
+
+	private: System::Windows::Forms::TextBox^ textId;
+	private: System::Windows::Forms::TextBox^ textSustrato;
+	private: System::Windows::Forms::TextBox^ textArea;
+
+
+
 	private: System::Windows::Forms::Label^ label7;
 	private: System::Windows::Forms::Button^ button1;
 
@@ -69,12 +79,12 @@ namespace SystemControlCropView {
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->label6 = (gcnew System::Windows::Forms::Label());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox6 = (gcnew System::Windows::Forms::TextBox());
+			this->textUbicacion = (gcnew System::Windows::Forms::TextBox());
+			this->textSuelo = (gcnew System::Windows::Forms::TextBox());
+			this->textCultivo = (gcnew System::Windows::Forms::TextBox());
+			this->textId = (gcnew System::Windows::Forms::TextBox());
+			this->textSustrato = (gcnew System::Windows::Forms::TextBox());
+			this->textArea = (gcnew System::Windows::Forms::TextBox());
 			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
@@ -133,47 +143,47 @@ namespace SystemControlCropView {
 			this->label6->TabIndex = 5;
 			this->label6->Text = L"Area";
 			// 
-			// textBox1
+			// textUbicacion
 			// 
-			this->textBox1->Location = System::Drawing::Point(374, 159);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(190, 26);
-			this->textBox1->TabIndex = 6;
+			this->textUbicacion->Location = System::Drawing::Point(374, 159);
+			this->textUbicacion->Name = L"textUbicacion";
+			this->textUbicacion->Size = System::Drawing::Size(190, 26);
+			this->textUbicacion->TabIndex = 6;
 			// 
-			// textBox2
+			// textSuelo
 			// 
-			this->textBox2->Location = System::Drawing::Point(374, 221);
-			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(190, 26);
-			this->textBox2->TabIndex = 7;
+			this->textSuelo->Location = System::Drawing::Point(374, 221);
+			this->textSuelo->Name = L"textSuelo";
+			this->textSuelo->Size = System::Drawing::Size(190, 26);
+			this->textSuelo->TabIndex = 7;
 			// 
-			// textBox3
+			// textCultivo
 			// 
-			this->textBox3->Location = System::Drawing::Point(374, 297);
-			this->textBox3->Name = L"textBox3";
-			this->textBox3->Size = System::Drawing::Size(190, 26);
-			this->textBox3->TabIndex = 8;
+			this->textCultivo->Location = System::Drawing::Point(374, 297);
+			this->textCultivo->Name = L"textCultivo";
+			this->textCultivo->Size = System::Drawing::Size(190, 26);
+			this->textCultivo->TabIndex = 8;
 			// 
-			// textBox4
+			// textId
 			// 
-			this->textBox4->Location = System::Drawing::Point(374, 362);
-			this->textBox4->Name = L"textBox4";
-			this->textBox4->Size = System::Drawing::Size(190, 26);
-			this->textBox4->TabIndex = 9;
+			this->textId->Location = System::Drawing::Point(374, 362);
+			this->textId->Name = L"textId";
+			this->textId->Size = System::Drawing::Size(190, 26);
+			this->textId->TabIndex = 9;
 			// 
-			// textBox5
+			// textSustrato
 			// 
-			this->textBox5->Location = System::Drawing::Point(374, 424);
-			this->textBox5->Name = L"textBox5";
-			this->textBox5->Size = System::Drawing::Size(190, 26);
-			this->textBox5->TabIndex = 10;
+			this->textSustrato->Location = System::Drawing::Point(374, 424);
+			this->textSustrato->Name = L"textSustrato";
+			this->textSustrato->Size = System::Drawing::Size(190, 26);
+			this->textSustrato->TabIndex = 10;
 			// 
-			// textBox6
+			// textArea
 			// 
-			this->textBox6->Location = System::Drawing::Point(374, 492);
-			this->textBox6->Name = L"textBox6";
-			this->textBox6->Size = System::Drawing::Size(190, 26);
-			this->textBox6->TabIndex = 11;
+			this->textArea->Location = System::Drawing::Point(374, 492);
+			this->textArea->Name = L"textArea";
+			this->textArea->Size = System::Drawing::Size(190, 26);
+			this->textArea->TabIndex = 11;
 			// 
 			// label7
 			// 
@@ -192,6 +202,7 @@ namespace SystemControlCropView {
 			this->button1->TabIndex = 13;
 			this->button1->Text = L"Grabar";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &newInvernadero::button1_Click);
 			// 
 			// newInvernadero
 			// 
@@ -200,12 +211,12 @@ namespace SystemControlCropView {
 			this->ClientSize = System::Drawing::Size(862, 681);
 			this->Controls->Add(this->button1);
 			this->Controls->Add(this->label7);
-			this->Controls->Add(this->textBox6);
-			this->Controls->Add(this->textBox5);
-			this->Controls->Add(this->textBox4);
-			this->Controls->Add(this->textBox3);
-			this->Controls->Add(this->textBox2);
-			this->Controls->Add(this->textBox1);
+			this->Controls->Add(this->textArea);
+			this->Controls->Add(this->textSustrato);
+			this->Controls->Add(this->textId);
+			this->Controls->Add(this->textCultivo);
+			this->Controls->Add(this->textSuelo);
+			this->Controls->Add(this->textUbicacion);
 			this->Controls->Add(this->label6);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->label4);
@@ -219,5 +230,25 @@ namespace SystemControlCropView {
 
 		}
 #pragma endregion
-	};
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		int idLote = Convert::ToInt64(this->textId->Text);
+		InvernaderoController^ invernaderoController = gcnew  InvernaderoController();
+		List<invernadero^>^ listaInvernaderos = invernaderoController->buscarId(idLote);
+		if (listaInvernaderos->Count == 0) {
+			int idLote = Convert::ToInt64(this->textId->Text);
+			String^ ubicacion = this->textUbicacion->Text;
+			String^ tipodesuelo = this->textSuelo->Text;
+			String^ sustrato = this->textSustrato->Text;
+			String^ cultivo = this->textCultivo->Text;
+			int area = Convert::ToInt64(this->textArea->Text);
+			invernaderoController->agregarInvernadero(ubicacion, tipodesuelo, cultivo, idLote, sustrato, area);
+			MessageBox::Show("El invernadero ha sido registrado con exito");
+		}
+		else {
+
+			MessageBox::Show("el id del invernadero ya esta registrado");
+		}
+
+	}
+};
 }

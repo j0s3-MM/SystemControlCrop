@@ -468,7 +468,7 @@ namespace SystemControlCropView {
 		InvernaderoController^ invernaderoController = gcnew InvernaderoController();
 		for (int i = 0; i < this->dataGridView1->SelectedRows->Count; i++) {  // sirve para eliminar varios elementos seleccionados
 			int filaSeleccionada = this->dataGridView1->SelectedRows[i]->Index;
-			int idEliminar = Convert::ToInt64(this->dataGridView1->SelectedRows[filaSeleccionada]->Cells[0]->Value->ToString());
+			int idEliminar = Convert::ToInt32(this->dataGridView1->SelectedRows[filaSeleccionada]->Cells[0]->Value->ToString());
 			invernaderoController->eliminarInvernadero(idEliminar);
 
 		}

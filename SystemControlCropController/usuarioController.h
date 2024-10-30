@@ -8,5 +8,9 @@ namespace SystemControlCropController {
 		public:
 			UsuarioController();
 			int verificarUser(String^ usernanme, String^ contrasena);
+			void newUser(int idPersona, String^ nombre, int edad, String^ sexo, String^ contraseña);
+			void escribirArchivo(List<Usuario^>^ listaUsuarios);
+			List<Usuario^>^ buscarAll();
+			List<Usuario^>^ buscarXdni(int idPersonabuscado);
 	};
 }
