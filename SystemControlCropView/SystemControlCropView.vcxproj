@@ -120,10 +120,13 @@
     <ClCompile Include="descripcionCultivo.cpp" />
     <ClCompile Include="editAdminInvernadero.cpp" />
     <ClCompile Include="editInvernadero.cpp" />
+    <ClCompile Include="editSensor.cpp" />
+    <ClCompile Include="frmGraficas.cpp" />
     <ClCompile Include="frmPrincipal.cpp" />
     <ClCompile Include="Invernadero.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="newInvernadero.cpp" />
+    <ClCompile Include="newSensor.cpp" />
     <ClCompile Include="newUser.cpp" />
     <ClCompile Include="sensores.cpp" />
   </ItemGroup>
@@ -140,6 +143,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -164,6 +168,12 @@
     <ClInclude Include="editInvernadero.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="editSensor.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="frmGraficas.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="frmPrincipal.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -171,6 +181,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="newInvernadero.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="newSensor.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="newUser.h">
@@ -202,6 +215,12 @@
     <EmbeddedResource Include="editInvernadero.resx">
       <DependentUpon>editInvernadero.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="editSensor.resx">
+      <DependentUpon>editSensor.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGraficas.resx">
+      <DependentUpon>frmGraficas.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.h</DependentUpon>
     </EmbeddedResource>
@@ -210,6 +229,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="newInvernadero.resx">
       <DependentUpon>newInvernadero.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="newSensor.resx">
+      <DependentUpon>newSensor.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="newUser.resx">
       <DependentUpon>newUser.h</DependentUpon>

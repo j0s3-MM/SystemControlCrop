@@ -84,6 +84,9 @@
     <ClInclude Include="microcontrolador.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="GrafConsumoAguaxInvernadero.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="planta.cpp">
@@ -153,6 +156,9 @@
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="microcontrolador.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="GrafConsumoAguaxInvernadero.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>

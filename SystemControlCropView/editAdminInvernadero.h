@@ -1,10 +1,12 @@
 #pragma once
 #include "newInvernadero.h"
 #include "editInvernadero.h"
+#include "frmGraficas.h"
 #include "Componentes.h"
 #include "Actuadores.h"
 #include "cultivoInfo.h"
 #include "sensores.h"
+
 namespace SystemControlCropView {
 
 	using namespace System;
@@ -181,20 +183,21 @@ namespace SystemControlCropView {
 			// informacionToolStripMenuItem
 			// 
 			this->informacionToolStripMenuItem->Name = L"informacionToolStripMenuItem";
-			this->informacionToolStripMenuItem->Size = System::Drawing::Size(209, 34);
+			this->informacionToolStripMenuItem->Size = System::Drawing::Size(270, 34);
 			this->informacionToolStripMenuItem->Text = L"informacion";
 			this->informacionToolStripMenuItem->Click += gcnew System::EventHandler(this, &editAdminInvernadero::informacionToolStripMenuItem_Click);
 			// 
 			// graficasToolStripMenuItem
 			// 
 			this->graficasToolStripMenuItem->Name = L"graficasToolStripMenuItem";
-			this->graficasToolStripMenuItem->Size = System::Drawing::Size(209, 34);
+			this->graficasToolStripMenuItem->Size = System::Drawing::Size(270, 34);
 			this->graficasToolStripMenuItem->Text = L"Graficas";
+			this->graficasToolStripMenuItem->Click += gcnew System::EventHandler(this, &editAdminInvernadero::graficasToolStripMenuItem_Click);
 			// 
 			// estadisticasToolStripMenuItem
 			// 
 			this->estadisticasToolStripMenuItem->Name = L"estadisticasToolStripMenuItem";
-			this->estadisticasToolStripMenuItem->Size = System::Drawing::Size(209, 34);
+			this->estadisticasToolStripMenuItem->Size = System::Drawing::Size(270, 34);
 			this->estadisticasToolStripMenuItem->Text = L"Estadisticas";
 			// 
 			// actuadoresToolStripMenuItem
@@ -223,6 +226,7 @@ namespace SystemControlCropView {
 			this->groupBox1->TabIndex = 1;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Invernadero";
+			this->groupBox1->Enter += gcnew System::EventHandler(this, &editAdminInvernadero::groupBox1_Enter);
 			// 
 			// button4
 			// 
@@ -383,6 +387,7 @@ namespace SystemControlCropView {
 			this->MainMenuStrip = this->menuStrip1;
 			this->Name = L"editAdminInvernadero";
 			this->Text = L"editAdminInvernadero";
+			this->Load += gcnew System::EventHandler(this, &editAdminInvernadero::editAdminInvernadero_Load);
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
 			this->groupBox1->ResumeLayout(false);
@@ -404,8 +409,23 @@ namespace SystemControlCropView {
 		ventanaNuevoInvernadero->Show();
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		editInvernadero^ ventanaeditInvernadero = gcnew editInvernadero();
-		ventanaeditInvernadero->Show();
+
+		if (dataGridView1->SelectedRows->Count == 0) {
+			MessageBox::Show("Por favor, seleccione un registro para editar.", "Advertencia", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			return; // Salir del evento si no hay filas seleccionadas
+		}
+
+		int filaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; /*Le pongo [0] porque deseo el índice de la única fila que he seleccionado*/
+		int idEditar = Convert::ToInt64(this->dataGridView1->Rows[filaSeleccionada]->Cells[3]->Value->ToString());
+		InvernaderoController^ invernaderoController = gcnew InvernaderoController();
+		invernadero^ objInvernadero = invernaderoController->buscarIdEditar(idEditar);
+
+		editInvernadero^ ventanaEditarMedico = gcnew editInvernadero(objInvernadero);
+		ventanaEditarMedico->ShowDialog();
+
+		this->dataGridView1->Rows->Clear();
+		List<invernadero^>^ listaInvernaderos = invernaderoController->buscarAll();
+		mostrarGrilla(listaInvernaderos);
 	}
 	private: System::Void actuadoresToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		Actuadores^ ventanaActuador = gcnew Actuadores();
@@ -466,15 +486,26 @@ namespace SystemControlCropView {
 	}
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 		InvernaderoController^ invernaderoController = gcnew InvernaderoController();
+		List<invernadero^>^ listaInvernaderos;
 		for (int i = 0; i < this->dataGridView1->SelectedRows->Count; i++) {  // sirve para eliminar varios elementos seleccionados
-			int filaSeleccionada = this->dataGridView1->SelectedRows[i]->Index;
-			int idEliminar = Convert::ToInt32(this->dataGridView1->SelectedRows[filaSeleccionada]->Cells[3]->Value);
+			int filaSeleccionada = this->dataGridView1->SelectedRows[0]->Index;
+			int idEliminar = Convert::ToInt64(this->dataGridView1->Rows[filaSeleccionada]->Cells[3]->Value->ToString());
 			invernaderoController->eliminarInvernadero(idEliminar);
 
 		}
 		MessageBox::Show("El invernadero  ha sido eliminado");
-
+		listaInvernaderos = invernaderoController->buscarAll();
+		mostrarGrilla(listaInvernaderos);
 
 	}
+private: System::Void editAdminInvernadero_Load(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void groupBox1_Enter(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void graficasToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	frmGraficas^ ventanaConsumoAguaxInvernadero = gcnew frmGraficas();
+	//ventanaConsumoAguaxInvernadero->MdiParent = this;
+	ventanaConsumoAguaxInvernadero->Show();
+}
 };
 }

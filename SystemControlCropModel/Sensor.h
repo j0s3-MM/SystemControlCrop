@@ -15,12 +15,13 @@ namespace SystemControlCropModel {
 		String^ fechaInstalacion;
 		String^ proposito;
 		planta^ plantas;
-
+		String^ estado;
+		int idSensor;
 
 	public:
 
 		Sensor();
-		Sensor(String^ categoria, double valorActual, int frecuencia, int voltajeOperacion, String^ fechaInstalacion, String^ proposito, planta^ plantas);
+		Sensor(String^ categoria, double valorActual, int frecuencia, int voltajeOperacion, String^ fechaInstalacion, String^ proposito, planta^ plantas, String^ estado, int idSensor);
 
 
 		double getvalorActual();
@@ -43,6 +44,12 @@ namespace SystemControlCropModel {
 
 		planta^ getPlanta();
 		void setPlanta(planta^ planta);
+
+		String^ getEstado();
+		void setEstado(String^ estado);
+
+		int getId();
+		void setId(int idSensor);
 	};
 
 }

@@ -6,7 +6,6 @@ namespace SystemControlCropModel {
     public ref class sensorHumedad :Sensor
     {
     protected:
-        int idSensor;
         int humedadActual;
         bool estadoUmbral;
         int configResistencia;
@@ -17,11 +16,9 @@ namespace SystemControlCropModel {
 
         // Constructores
         sensorHumedad();
-        sensorHumedad(String^ categoria, double valorActual, int frecuencia, int voltajeOperacion, String^ fechaInstalacion, String^ proposito, planta^ plantas, int idSensor, int humedadActual, bool estadoUmbral, int configResistencia, int humedadLimite, String^ tipoSalida);
+        sensorHumedad(String^ categoria, double valorActual, int frecuencia, int voltajeOperacion, String^ fechaInstalacion, String^ proposito, planta^ plantas, int humedadActual, bool estadoUmbral, int configResistencia, int humedadLimite, String^ tipoSalida);
 
         // Mtodos Getters y Setters para idSensor
-        int getidSensor();
-        void setidSensor(int idSensor);
 
         // Mtodos Getters y Setters para humedadActual
         int gethumedadActual();

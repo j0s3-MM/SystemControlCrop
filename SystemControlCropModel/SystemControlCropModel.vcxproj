@@ -118,6 +118,7 @@
     <ClInclude Include="Componentes.h" />
     <ClInclude Include="dimensiones.h" />
     <ClInclude Include="fruta.h" />
+    <ClInclude Include="GrafConsumoAguaxInvernadero.h" />
     <ClInclude Include="invernadero.h" />
     <ClInclude Include="LucesLed.h" />
     <ClInclude Include="microcontrolador.h" />
@@ -143,6 +144,7 @@
     <ClCompile Include="Componentes.cpp" />
     <ClCompile Include="dimensiones.cpp" />
     <ClCompile Include="fruta.cpp" />
+    <ClCompile Include="GrafConsumoAguaxInvernadero.cpp" />
     <ClCompile Include="invernadero.cpp" />
     <ClCompile Include="LucesLed.cpp" />
     <ClCompile Include="microcontrolador.cpp" />

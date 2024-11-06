@@ -5,6 +5,7 @@ using namespace SystemControlCropModel;
 actuador::actuador() {
 }
 
+
 // Constructor parametrizado
 actuador::actuador(String^ estado, int duracion, int cantidad, int potenciaConsumida) {
     this->estado = estado;
@@ -17,7 +18,6 @@ actuador::actuador(String^ estado, int duracion, int cantidad, int potenciaConsu
 String^ actuador::getestado() {
     return this->estado;
 }
-
 void actuador::setestado(String^ estado) {
     this->estado = estado;
 }

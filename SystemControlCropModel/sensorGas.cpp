@@ -6,7 +6,7 @@ sensorGas::sensorGas() :Sensor() {
 }
 
 // Constructor parametrizado
-sensorGas::sensorGas(String^ categoria, double valorActual, int frecuencia, int voltajeOperacion, String^ fechaInstalacion, String^ proposito, planta^ plantas, double resistencia, int temperaturaOperacion, int humedadOperacion, int tiempoCalentamiento, String^ rangoDeteccion, String^ gasDeteccion) : Sensor(categoria, valorActual, frecuencia, voltajeOperacion, fechaInstalacion, proposito, plantas) {
+sensorGas::sensorGas(String^ categoria, double valorActual, int frecuencia, int voltajeOperacion, String^ fechaInstalacion, String^ proposito, planta^ plantas, double resistencia, int temperaturaOperacion, int humedadOperacion, int tiempoCalentamiento, String^ rangoDeteccion, String^ gasDeteccion) : Sensor(categoria, valorActual, frecuencia, voltajeOperacion, fechaInstalacion, proposito, plantas, estado, idSensor) {
     this->resistencia = resistencia;
     this->temperaturaOperacion = temperaturaOperacion;
     this->humedadOperacion = humedadOperacion;

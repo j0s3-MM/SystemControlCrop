@@ -6,8 +6,7 @@ sensorHumedad::sensorHumedad() :Sensor() {
 }
 
 // Constructor parametrizado
-sensorHumedad::sensorHumedad(String^ categoria, double valorActual, int frecuencia, int voltajeOperacion, String^ fechaInstalacion, String^ proposito, planta^ plantas, int idSensor, int humedadActual, bool estadoUmbral, int configResistencia, int humedadLimite, String^ tipoSalida) : Sensor(categoria, valorActual, frecuencia, voltajeOperacion, fechaInstalacion, proposito, plantas) {
-    this->idSensor = idSensor;
+sensorHumedad::sensorHumedad(String^ categoria, double valorActual, int frecuencia, int voltajeOperacion, String^ fechaInstalacion, String^ proposito, planta^ plantas, int humedadActual, bool estadoUmbral, int configResistencia, int humedadLimite, String^ tipoSalida) : Sensor(categoria, valorActual, frecuencia, voltajeOperacion, fechaInstalacion, proposito, plantas, estado, idSensor){
     this->humedadActual = humedadActual;
     this->estadoUmbral = estadoUmbral;
     this->configResistencia = configResistencia;
@@ -16,13 +15,6 @@ sensorHumedad::sensorHumedad(String^ categoria, double valorActual, int frecuenc
 }
 
 // Getter y Setter para idSensor
-int sensorHumedad::getidSensor() {
-    return this->idSensor;
-}
-
-void sensorHumedad::setidSensor(int idSensor) {
-    this->idSensor = idSensor;
-}
 
 // Getter y Setter para humedadActual
 int sensorHumedad::gethumedadActual() {

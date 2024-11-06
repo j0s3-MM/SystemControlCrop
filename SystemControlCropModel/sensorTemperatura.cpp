@@ -6,7 +6,7 @@ sensorTemperatura::sensorTemperatura() :Sensor() {
 }
 
 // Constructor parametrizado
-sensorTemperatura::sensorTemperatura(String^ categoria, double valorActual, int frecuencia, int voltajeOperacion, String^ fechaInstalacion, String^ proposito, planta^ plantas, String^ rangopOperacion, double voltajeSalida, int idSensor, int factorConversion) :Sensor(categoria, valorActual, frecuencia, voltajeOperacion, fechaInstalacion, proposito, plantas) {
+sensorTemperatura::sensorTemperatura(String^ categoria, double valorActual, int frecuencia, int voltajeOperacion, String^ fechaInstalacion, String^ proposito, planta^ plantas, String^ rangopOperacion, double voltajeSalida, int idSensor, int factorConversion) :Sensor(categoria, valorActual, frecuencia, voltajeOperacion, fechaInstalacion, proposito, plantas,estado, idSensor) {
     this->rangopOperacion = rangopOperacion;
     this->voltajeSalida = voltajeSalida;
     this->idSensor = idSensor;

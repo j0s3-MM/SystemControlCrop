@@ -1,13 +1,17 @@
 #pragma once
-
+#include "newSensor.h"
+#include "editSensor.h"
 namespace SystemControlCropView {
 
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
+	using namespace System::Collections::Generic;
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace SystemControlCropController;
+	using namespace SystemControlCropModel;
 
 	/// <summary>
 	/// Resumen de sensores
@@ -38,7 +42,9 @@ namespace SystemControlCropView {
 	protected:
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Label^ label2;
-	private: System::Windows::Forms::TextBox^ textBox1;
+	private: System::Windows::Forms::TextBox^ idsensor;
+
+
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Button^ editar;
 
@@ -51,7 +57,8 @@ namespace SystemControlCropView {
 
 
 	private: System::Windows::Forms::Button^ eliminar;
-	private: System::Windows::Forms::ComboBox^ comboBox1;
+	private: System::Windows::Forms::ComboBox^ cmbCategoria;
+
 
 	private:
 		/// <summary>
@@ -67,26 +74,26 @@ namespace SystemControlCropView {
 		void InitializeComponent(void)
 		{
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
-			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->buscar = (gcnew System::Windows::Forms::Button());
+			this->cmbCategoria = (gcnew System::Windows::Forms::ComboBox());
+			this->eliminar = (gcnew System::Windows::Forms::Button());
+			this->editar = (gcnew System::Windows::Forms::Button());
+			this->nuevo = (gcnew System::Windows::Forms::Button());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->nuevo = (gcnew System::Windows::Forms::Button());
-			this->editar = (gcnew System::Windows::Forms::Button());
-			this->eliminar = (gcnew System::Windows::Forms::Button());
-			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
+			this->buscar = (gcnew System::Windows::Forms::Button());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->idsensor = (gcnew System::Windows::Forms::TextBox());
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// groupBox1
 			// 
-			this->groupBox1->Controls->Add(this->comboBox1);
+			this->groupBox1->Controls->Add(this->cmbCategoria);
 			this->groupBox1->Controls->Add(this->eliminar);
 			this->groupBox1->Controls->Add(this->editar);
 			this->groupBox1->Controls->Add(this->nuevo);
@@ -94,7 +101,7 @@ namespace SystemControlCropView {
 			this->groupBox1->Controls->Add(this->buscar);
 			this->groupBox1->Controls->Add(this->label3);
 			this->groupBox1->Controls->Add(this->label2);
-			this->groupBox1->Controls->Add(this->textBox1);
+			this->groupBox1->Controls->Add(this->idsensor);
 			this->groupBox1->Controls->Add(this->label1);
 			this->groupBox1->Location = System::Drawing::Point(102, 68);
 			this->groupBox1->Name = L"groupBox1";
@@ -103,47 +110,44 @@ namespace SystemControlCropView {
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Sensores";
 			// 
-			// label1
+			// cmbCategoria
 			// 
-			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(87, 104);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(21, 20);
-			this->label1->TabIndex = 0;
-			this->label1->Text = L"id";
+			this->cmbCategoria->FormattingEnabled = true;
+			this->cmbCategoria->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Temperatura", L"Gas", L"Humedad" });
+			this->cmbCategoria->Location = System::Drawing::Point(484, 104);
+			this->cmbCategoria->Name = L"cmbCategoria";
+			this->cmbCategoria->Size = System::Drawing::Size(141, 28);
+			this->cmbCategoria->TabIndex = 10;
 			// 
-			// textBox1
+			// eliminar
 			// 
-			this->textBox1->Location = System::Drawing::Point(134, 104);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(150, 26);
-			this->textBox1->TabIndex = 1;
+			this->eliminar->Location = System::Drawing::Point(559, 554);
+			this->eliminar->Name = L"eliminar";
+			this->eliminar->Size = System::Drawing::Size(93, 36);
+			this->eliminar->TabIndex = 9;
+			this->eliminar->Text = L"eliminar";
+			this->eliminar->UseVisualStyleBackColor = true;
+			this->eliminar->Click += gcnew System::EventHandler(this, &sensores::eliminar_Click);
 			// 
-			// label2
+			// editar
 			// 
-			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(364, 107);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(78, 20);
-			this->label2->TabIndex = 2;
-			this->label2->Text = L"Categoria";
+			this->editar->Location = System::Drawing::Point(403, 554);
+			this->editar->Name = L"editar";
+			this->editar->Size = System::Drawing::Size(93, 36);
+			this->editar->TabIndex = 8;
+			this->editar->Text = L"Editar";
+			this->editar->UseVisualStyleBackColor = true;
+			this->editar->Click += gcnew System::EventHandler(this, &sensores::button2_Click);
 			// 
-			// label3
+			// nuevo
 			// 
-			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(531, 107);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(0, 20);
-			this->label3->TabIndex = 3;
-			// 
-			// buscar
-			// 
-			this->buscar->Location = System::Drawing::Point(717, 104);
-			this->buscar->Name = L"buscar";
-			this->buscar->Size = System::Drawing::Size(88, 35);
-			this->buscar->TabIndex = 5;
-			this->buscar->Text = L"buscar";
-			this->buscar->UseVisualStyleBackColor = true;
+			this->nuevo->Location = System::Drawing::Point(254, 554);
+			this->nuevo->Name = L"nuevo";
+			this->nuevo->Size = System::Drawing::Size(93, 36);
+			this->nuevo->TabIndex = 7;
+			this->nuevo->Text = L"Nuevo";
+			this->nuevo->UseVisualStyleBackColor = true;
+			this->nuevo->Click += gcnew System::EventHandler(this, &sensores::nuevo_Click);
 			// 
 			// dataGridView1
 			// 
@@ -180,41 +184,48 @@ namespace SystemControlCropView {
 			this->Column3->Name = L"Column3";
 			this->Column3->Width = 150;
 			// 
-			// nuevo
+			// buscar
 			// 
-			this->nuevo->Location = System::Drawing::Point(254, 554);
-			this->nuevo->Name = L"nuevo";
-			this->nuevo->Size = System::Drawing::Size(93, 36);
-			this->nuevo->TabIndex = 7;
-			this->nuevo->Text = L"Nuevo";
-			this->nuevo->UseVisualStyleBackColor = true;
+			this->buscar->Location = System::Drawing::Point(717, 104);
+			this->buscar->Name = L"buscar";
+			this->buscar->Size = System::Drawing::Size(88, 35);
+			this->buscar->TabIndex = 5;
+			this->buscar->Text = L"buscar";
+			this->buscar->UseVisualStyleBackColor = true;
+			this->buscar->Click += gcnew System::EventHandler(this, &sensores::buscar_Click);
 			// 
-			// editar
+			// label3
 			// 
-			this->editar->Location = System::Drawing::Point(403, 554);
-			this->editar->Name = L"editar";
-			this->editar->Size = System::Drawing::Size(93, 36);
-			this->editar->TabIndex = 8;
-			this->editar->Text = L"Editar";
-			this->editar->UseVisualStyleBackColor = true;
-			this->editar->Click += gcnew System::EventHandler(this, &sensores::button2_Click);
+			this->label3->AutoSize = true;
+			this->label3->Location = System::Drawing::Point(531, 107);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(0, 20);
+			this->label3->TabIndex = 3;
 			// 
-			// eliminar
+			// label2
 			// 
-			this->eliminar->Location = System::Drawing::Point(559, 554);
-			this->eliminar->Name = L"eliminar";
-			this->eliminar->Size = System::Drawing::Size(93, 36);
-			this->eliminar->TabIndex = 9;
-			this->eliminar->Text = L"eliminar";
-			this->eliminar->UseVisualStyleBackColor = true;
+			this->label2->AutoSize = true;
+			this->label2->Location = System::Drawing::Point(364, 107);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(78, 20);
+			this->label2->TabIndex = 2;
+			this->label2->Text = L"Categoria";
 			// 
-			// comboBox1
+			// idsensor
 			// 
-			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Location = System::Drawing::Point(484, 104);
-			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(141, 28);
-			this->comboBox1->TabIndex = 10;
+			this->idsensor->Location = System::Drawing::Point(134, 104);
+			this->idsensor->Name = L"idsensor";
+			this->idsensor->Size = System::Drawing::Size(150, 26);
+			this->idsensor->TabIndex = 1;
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(87, 104);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(21, 20);
+			this->label1->TabIndex = 0;
+			this->label1->Text = L"id";
 			// 
 			// sensores
 			// 
@@ -232,6 +243,72 @@ namespace SystemControlCropView {
 		}
 #pragma endregion
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+		if (dataGridView1->SelectedRows->Count == 0) {
+			MessageBox::Show("Por favor, seleccione un registro para editar.", "Advertencia", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			return; // Salir del evento si no hay filas seleccionadas
+		}
+
+		int filaSeleccionada = this->dataGridView1->SelectedRows[0]->Index; /*Le pongo [0] porque deseo el índice de la única fila que he seleccionado*/
+		int idEditar = Convert::ToInt64(this->dataGridView1->Rows[filaSeleccionada]->Cells[0]->Value->ToString());
+		SensorController^ sensorController = gcnew SensorController();
+		Sensor^ objSensor = sensorController->buscarIdEditar(idEditar);
+
+		editSensor^ ventanaEditarSensor = gcnew editSensor(objSensor);
+		ventanaEditarSensor->ShowDialog();
+
+		this->dataGridView1->Rows->Clear();
+		List<Sensor^>^ listaSensores = sensorController->buscarAll();
+		mostrarGrilla(listaSensores);
+	}
+	private: System::Void buscar_Click(System::Object^ sender, System::EventArgs^ e) {
+		String^ idSensor = this->idsensor->Text;
+		String^ categoria = this->cmbCategoria->Text;
+		// int idLotebuscar
+		Sensor^ sensor = gcnew Sensor();
+		List<Sensor^>^ listaSensores;
+
+		SensorController^ sensorController = gcnew SensorController();
+		if (idSensor->CompareTo("") == 0 && categoria->CompareTo("") == 0) {
+			listaSensores = sensorController->buscarAll();
+		}
+		if (idSensor->CompareTo("") == 0 && categoria->CompareTo("") != 0) {
+			listaSensores = sensorController->buscarCategoria(categoria);
+		}
+		if (idSensor->CompareTo("") != 0) {
+			int idbuscado2 = Convert::ToInt64(idSensor);
+			listaSensores = sensorController->buscarId(idbuscado2);
+		}
+
+		mostrarGrilla(listaSensores);
+	}
+	public: void mostrarGrilla(List<Sensor^>^ listaSensores) {
+		this->dataGridView1->Rows->Clear(); //eliminar de sus filas todo-borrar
+		for (int i = 0; i < listaSensores->Count; i++) { //recorrer los elementos de la lista
+			Sensor^ sensor = listaSensores[i];
+			array<String^>^ filaGrilla = gcnew array<String^>(3);
+			filaGrilla[0] = Convert::ToString(sensor->getId());
+			filaGrilla[1] = sensor->getcategoria();
+			filaGrilla[2] = sensor->getEstado();
+				
+			this->dataGridView1->Rows->Add(filaGrilla);
+		}
+	}
+	private: System::Void eliminar_Click(System::Object^ sender, System::EventArgs^ e) {
+		SensorController^ sensorController = gcnew SensorController();
+		List<Sensor^>^ listaSensores;
+		for (int i = 0; i < this->dataGridView1->SelectedRows->Count; i++) {  // sirve para eliminar varios elementos seleccionados
+			int filaSeleccionada = this->dataGridView1->SelectedRows[0]->Index;
+			int idEliminar = Convert::ToInt64(this->dataGridView1->Rows[filaSeleccionada]->Cells[0]->Value->ToString());
+			sensorController->eliminarSensor(idEliminar);
+
+		}
+		MessageBox::Show("El invernadero  ha sido eliminado");
+		listaSensores = sensorController->buscarAll();
+		mostrarGrilla(listaSensores);
+	}
+	private: System::Void nuevo_Click(System::Object^ sender, System::EventArgs^ e) {
+		newSensor^ ventanaNuevoSensor = gcnew newSensor();
+		ventanaNuevoSensor->Show();
 	}
 };
 }
