@@ -5,117 +5,81 @@ using namespace SystemControlCropController;
 using namespace SystemControlCropModel;
 
 UsuarioController::UsuarioController() {
-
+    this->objConexion = gcnew SqlConnection();
 }
 
-int UsuarioController::verificarUser(String^ username, String^ contrasena){
-	array<String^>^ lineasUserContrasena = File::ReadAllLines("Usuarios.txt");
-	String^ separadores = ";";
-    int i; 
-    for each (String^ linea in lineasUserContrasena) {
-        array<String^>^ datos = linea->Split(separadores->ToCharArray());
-        if (datos[1]->CompareTo(username) == 0) {
-            if (datos[4]->CompareTo(contrasena) == 0) {
-                return 1;       
-            }
-            else {
-                i = 0;
-            }
-        }
-        else {
-            i = 0;
-        }
+void UsuarioController::abrirConexion() {
+    /*Vamos a definir la cadena de conexion para nuestra base de datos*/
+    this->objConexion->ConnectionString = "Server = idb1inf53.cw2hscntsr5w.us-east-1.rds.amazonaws.com; DataBase = SistemaControlInvernadero; User id = admin; Password = PUCP2005";  //colocar server
+    /*Abrimos la conexion*/
+    this->objConexion->Open();
+}
+
+void UsuarioController::cerrarConexion() {
+    this->objConexion->Close();
+}
+
+int UsuarioController::verificarUser(int DNI, String^ Contraseña){
+    abrirConexion();
+    /*SqlCommand nos permite crear un objeto a través del cual voy a definir una sentencia SQL*/
+    SqlCommand^ objSentencia = gcnew SqlCommand();
+    /*Aqui estoy indicando que mi sentencia se va a ejecutar en esa conexion de base de datos*/
+    objSentencia->Connection = this->objConexion;
+    /*Aqui voy a definir la sentencia SQL que voy a ejecutar*/
+    //objSentencia->CommandText = "SELECT * FROM Usuario";
+    objSentencia->CommandText = "SELECT * FROM Usuario WHERE DNI = @DNI and Contraseña = @Contraseña";
+    objSentencia->Parameters->AddWithValue("@DNI", DNI );
+    objSentencia->Parameters->AddWithValue("@Contraseña", Contraseña);
+    //objSentencia->Parameters->AddWithValue("@Contraseña", "%" + Contraseña + "%");   
+    /*Ahora para ejecutar voy a utilizar ExecuteReader cuando la sentencia es SELECT*/
+    /*Para recuperar la informacion que me devuelve un select, utilizo SqlDataReader*/
+    SqlDataReader^ objData = objSentencia->ExecuteReader();
+    bool estado = objData->HasRows;
+    objData->Close();
+    if (estado)
+    {
+        cerrarConexion();
+        return 1;
     }
-    return i;
+    cerrarConexion();
+    return 0;
 }
 
-void UsuarioController::newUser(int idPersona, String^ nombre, int edad, String^ sexo, String^ contraseña) {
-    List<Usuario^>^ listaUsuarios = buscarAll();  //es una lista que contiene todos los medicos que hay en el archivo
-    Usuario^ usuario = gcnew Usuario();
-    usuario->setIdPersona(idPersona);
-    usuario->setNombre(nombre);
-    usuario->setEdad(edad);
-    usuario->setGenero(sexo);
-    usuario->setContrasena(contraseña);
-    listaUsuarios->Add(usuario);
-    escribirArchivo(listaUsuarios);
-}
+int UsuarioController::Registrarse(int DNI, String^ Contraseña) {
+    abrirConexion();
+    /*SqlCommand nos permite crear un objeto a través del cual voy a definir una sentencia SQL*/
+    SqlCommand^ objSentencia = gcnew SqlCommand();
+    /*Aqui estoy indicando que mi sentencia se va a ejecutar en esa conexion de base de datos*/
+    objSentencia->Connection = this->objConexion;
+    /*Aqui voy a definir la sentencia SQL que voy a ejecutar*/
+    objSentencia->CommandText = "SELECT * FROM Usuario WHERE DNI = @DNI";
+    objSentencia->Parameters->AddWithValue("@DNI", DNI );
+    /*Ahora para ejecutar voy a utilizar ExecuteReader cuando la sentencia es SELECT*/
+    /*Para recuperar la informacion que me devuelve un select, utilizo SqlDataReader*/
+    SqlDataReader^ objData = objSentencia->ExecuteReader();
+    bool estado = objData->HasRows;
+    objData->Close();
 
-void UsuarioController::escribirArchivo(List<Usuario^>^ listaUsuarios) {
-    
-    array<String^>^ lineasArchivo = gcnew array<String^>(listaUsuarios->Count);
-    for (int i = 0; i < listaUsuarios->Count; i++) {
-        Usuario^ usuario = listaUsuarios[i];
-        lineasArchivo[i] = usuario->getIdPersona() + ";" + usuario->getNombre() + ";" + usuario->getEdad() + ";" + usuario->getGenero() + ";"+ usuario->getContrasena();
-    }
-    File::WriteAllLines("Usuarios.txt", lineasArchivo);
-    
-}
+    SqlCommand^ objSentencia2 = gcnew SqlCommand();
+    /*Aqui estoy indicando que mi sentencia se va a ejecutar en esa conexion de base de datos*/
+    objSentencia2->Connection = this->objConexion;
 
-List<Usuario^>^ UsuarioController::buscarAll() {
-    List<Usuario^>^ listaUsuarios = gcnew List<Usuario^>();
-    array<String^>^ lineasArchivo = File::ReadAllLines("Usuarios.txt");
-    String^ separadores = ";";
-    for each (String ^ linea in lineasArchivo) {  //por a ir linea en cada elemento de lineaarchivo
-        //boy a separar los datos de una linea en un aregglo de strings
-        array<String^>^ datos = linea->Split(separadores->ToCharArray());
-        //Clase Persona
-        int idPersona = Convert::ToInt32(datos[0]);
-        String^ nombre = datos[1];
-        int edad = Convert::ToInt32(datos[2]);
-        String^ genero = datos[3];
-        String^ contraseña = datos[4];
+    if (estado)
+    {
         
+        objSentencia2->CommandText = "UPDATE  Usuario SET Contraseña =@Contraseña WHERE DNI = @DNI";
+        objSentencia2->Parameters->AddWithValue("@Contraseña", Contraseña);
+        objSentencia2->Parameters->AddWithValue("@DNI", DNI);
 
-
-        Usuario^ usuario = gcnew Usuario();
-        // Asignar propiedades de Persona
-        usuario->setIdPersona(idPersona);
-        usuario->setNombre(nombre);
-        usuario->setEdad(edad);
-        usuario->setGenero(genero);
-        usuario->setContrasena(contraseña);
-        // Asignar propiedades de Medico
-     
-
-        listaUsuarios->Add(usuario);
-
+        // Ejecuta el comando
+        objSentencia2->ExecuteNonQuery();
+        cerrarConexion();
+        return 1;
     }
-    return listaUsuarios;
+    cerrarConexion();
+    return 0;
+
+  
 }
 
-List<Usuario^>^ UsuarioController::buscarXdni(int idPersonabuscado) {
-    List<Usuario^>^ listaUsuarios = gcnew List<Usuario^>();
-    array<String^>^ lineasArchivo = File::ReadAllLines("Usuarios.txt");
-    String^ separadores = ";";
-    for each (String ^ linea in lineasArchivo) {  //por a ir linea en cada elemento de lineaarchivo
-        //boy a separar los datos de una linea en un aregglo de strings
-        array<String^>^ datos = linea->Split(separadores->ToCharArray());
-        //Clase Persona
-        int idPersona = Convert::ToInt32(datos[0]);
-        String^ nombre = datos[1];
-        int edad = Convert::ToInt32(datos[2]);
-        String^ genero = datos[3];
-        String^ contraseña = datos[4];
-
-        if (idPersona == idPersonabuscado)
-        {
-
-            Usuario^ usuario = gcnew Usuario();
-            // Asignar propiedades de Persona
-            usuario->setIdPersona(idPersona);
-            usuario->setNombre(nombre);
-            usuario->setEdad(edad);
-            usuario->setGenero(genero);
-            usuario->setContrasena(contraseña);
-            // Asignar propiedades de Medico
-
-
-            listaUsuarios->Add(usuario);
-        }
-
-
-    }
-    return listaUsuarios;
-}
 

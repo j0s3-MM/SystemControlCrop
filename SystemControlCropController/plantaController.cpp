@@ -1,105 +1,107 @@
-#include "sensorController.h"
+#include "plantaController.h"
 
 using namespace System::IO;
 using namespace SystemControlCropController;
 using namespace SystemControlCropModel;
 
-SensorController::SensorController() {
+plantaController::plantaController() {
     this->objConexion = gcnew SqlConnection();
 
 }
-void SensorController::abrirConexion() {
+void plantaController::abrirConexion() {
     /*Vamos a definir la cadena de conexion para nuestra base de datos*/
     this->objConexion->ConnectionString = "Server = idb1inf53.cw2hscntsr5w.us-east-1.rds.amazonaws.com; DataBase = SistemaControlInvernadero; User id = admin; Password = PUCP2005";  //colocar server
     /*Abrimos la conexion*/
     this->objConexion->Open();
 }
 
-void SensorController::cerrarConexion() {
+void plantaController::cerrarConexion() {
     this->objConexion->Close();
 }
 
 
-List<Sensor^>^ SensorController::buscarAll() {
-    List<Sensor^>^ listaSensores = gcnew List<Sensor^>();
+List<planta^>^ plantaController::buscarAll() {
+    List<planta^>^ listaPlantas = gcnew List<planta^>();
     abrirConexion();
     /*SqlCommand nos permite crear un objeto a través del cual voy a definir una sentencia SQL*/
     SqlCommand^ objSentencia = gcnew SqlCommand();
     /*Aqui estoy indicando que mi sentencia se va a ejecutar en esa conexion de base de datos*/
     objSentencia->Connection = this->objConexion;
     /*Aqui voy a definir la sentencia SQL que voy a ejecutar*/
-    objSentencia->CommandText = "SELECT * FROM Sensores";
+    objSentencia->CommandText = "SELECT * FROM planta";
     /*Ahora para ejecutar voy a utilizar ExecuteReader cuando la sentencia es SELECT*/
     /*Para recuperar la informacion que me devuelve un select, utilizo SqlDataReader*/
     SqlDataReader^ objData = objSentencia->ExecuteReader();
     while (objData->Read()) {
         int id = safe_cast<int>(objData[0]);
-        String^ modelo = safe_cast<String^>(objData[1]);
-        String^ nombre = safe_cast<String^>(objData[2]);
-        String^ categoria = safe_cast<String^>(objData[3]);
-        String^ estado = safe_cast<String^>(objData[4]);
-        Sensor^ objSensor = gcnew Sensor(categoria, modelo, estado,nombre, id);
-        listaSensores->Add(objSensor);
+        String^ nombre = safe_cast<String^>(objData[4]);
+        String^ tipoPlanta = safe_cast<String^>(objData[3]);
+        String^ maduracion = safe_cast<String^>(objData[1]);
+        String^ estado = safe_cast<String^>(objData[2]);
+        planta^ objPlanta = gcnew planta(id, maduracion, tipoPlanta, nombre, estado);
+        listaPlantas->Add(objPlanta);
     }
     objData->Close();
     cerrarConexion();
-    return listaSensores;
+    return listaPlantas;
 }
 
-List<Sensor^>^ SensorController::buscarSensoresxCategoriaxEstado(String^ categoria, String^ estado) {
-    List<Sensor^>^ listaSensores = gcnew List<Sensor^>();
+List<planta^>^ plantaController::buscarPlantaxNombrexMadurez(String^ nombre, String^ madurez) {
+    List<planta^>^ listaPlantas = gcnew List<planta^>();
     abrirConexion();
     /*SqlCommand nos permite crear un objeto a través del cual voy a definir una sentencia SQL*/
     SqlCommand^ objSentencia = gcnew SqlCommand();
     /*Aqui estoy indicando que mi sentencia se va a ejecutar en esa conexion de base de datos*/
     objSentencia->Connection = this->objConexion;
-    //proceso logico para buscar
-    if (categoria->CompareTo("") != 0 && estado->CompareTo("") != 0)
+    /*Aqui voy a definir la sentencia SQL que voy a ejecutar*/
+    if (nombre->CompareTo("") != 0 && madurez->CompareTo("") != 0)
+
     {
         objSentencia->Parameters->Clear();
-        objSentencia->CommandText = "SELECT * FROM Sensores where Nombre =  @Nombre  and EtapaMadurez = @Madurez";
-        objSentencia->Parameters->AddWithValue("@Categoria", categoria);
-        objSentencia->Parameters->AddWithValue("@Estado", estado);
+        objSentencia->CommandText = "SELECT * FROM planta where Nombre =  @Nombre  and EtapaMadurez = @Madurez";
+        objSentencia->Parameters->AddWithValue("@Nombre", nombre);
+        objSentencia->Parameters->AddWithValue("@Madurez", madurez);
 
     }
-    if (categoria->CompareTo("") != 0 && estado->CompareTo("") == 0)
-    {
+    if (nombre->CompareTo("") != 0 && madurez->CompareTo("") == 0)
+    {   
         objSentencia->Parameters->Clear();
-        objSentencia->CommandText = "SELECT * FROM Sensores where Categoria =  @Categoria";
-        objSentencia->Parameters->AddWithValue("@Categoria", categoria);
+        objSentencia->CommandText = "SELECT * FROM planta where Nombre =  @Nombre";
+        objSentencia->Parameters->AddWithValue("@Nombre", nombre);
     }
-    if (categoria->CompareTo("") == 0 && estado->CompareTo("") != 0)
+    if (nombre->CompareTo("") == 0 && madurez->CompareTo("") != 0)
     {
         objSentencia->Parameters->Clear();
-        objSentencia->CommandText = "SELECT * FROM Sensores where Estado = @Estado";
-        objSentencia->Parameters->AddWithValue("@Estado", estado);
+        objSentencia->CommandText = "SELECT * FROM planta where EtapaMadurez = @Madurez";
+        objSentencia->Parameters->AddWithValue("@Madurez", madurez);
     }
     /*Ahora para ejecutar voy a utilizar ExecuteReader cuando la sentencia es SELECT*/
     /*Para recuperar la informacion que me devuelve un select, utilizo SqlDataReader*/
     SqlDataReader^ objData = objSentencia->ExecuteReader();
-    bool estadobol = objData->HasRows;
+
+    bool estado = objData->HasRows;
     if (estado)
     {
         while (objData->Read()) {
             int id = safe_cast<int>(objData[0]);
-            String^ modelo = safe_cast<String^>(objData[1]);
-            String^ nombre = safe_cast<String^>(objData[2]);
-            String^ categoria = safe_cast<String^>(objData[3]);
-            String^ estado = safe_cast<String^>(objData[4]);
-            Sensor^ objSensor = gcnew Sensor(categoria, modelo, estado, nombre, id);
-            listaSensores->Add(objSensor);
-
+            String^ nombre = safe_cast<String^>(objData[4]);
+            String^ tipoPlanta = safe_cast<String^>(objData[3]);
+            String^ maduracion = safe_cast<String^>(objData[1]);
+            String^ estado = safe_cast<String^>(objData[2]);
+            planta^ objPlanta = gcnew planta(id, maduracion, tipoPlanta, nombre, estado);
+            listaPlantas->Add(objPlanta);
+            
         }
     }
     objData->Close();
     cerrarConexion();
-
-
-    return listaSensores;
+    
+    
+    return listaPlantas;
 }
 
-List<Sensor^>^ SensorController::buscarId(int id) {
-     List<Sensor^>^ listaSensores = gcnew List<Sensor^>();
+List<planta^>^ plantaController::buscarId(int id) {
+    List<planta^>^ listaPlantas = gcnew List<planta^>();
     abrirConexion();
     /*SqlCommand nos permite crear un objeto a través del cual voy a definir una sentencia SQL*/
     SqlCommand^ objSentencia = gcnew SqlCommand();
@@ -107,24 +109,22 @@ List<Sensor^>^ SensorController::buscarId(int id) {
     objSentencia->Connection = this->objConexion;
     /*Aqui voy a definir la sentencia SQL que voy a ejecutar*/
     objSentencia->Parameters->Clear();
-    objSentencia->CommandText = "SELECT * FROM Sensores where IdSensor =  @Id";
+    objSentencia->CommandText = "SELECT * FROM planta where IdPlanta =  @Id";
     objSentencia->Parameters->AddWithValue("@Id", id);
     /*Ahora para ejecutar voy a utilizar ExecuteReader cuando la sentencia es SELECT*/
     /*Para recuperar la informacion que me devuelve un select, utilizo SqlDataReader*/
     SqlDataReader^ objData = objSentencia->ExecuteReader();
-
-
     bool estado = objData->HasRows;
     if (estado)
     {
         while (objData->Read()) {
             int id = safe_cast<int>(objData[0]);
-            String^ modelo = safe_cast<String^>(objData[1]);
-            String^ nombre = safe_cast<String^>(objData[2]);
-            String^ categoria = safe_cast<String^>(objData[3]);
-            String^ estado = safe_cast<String^>(objData[4]);
-            Sensor^ objSensor = gcnew Sensor(categoria, modelo, estado, nombre, id);
-            listaSensores->Add(objSensor);
+            String^ nombre = safe_cast<String^>(objData[4]);
+            String^ tipoPlanta = safe_cast<String^>(objData[3]);
+            String^ maduracion = safe_cast<String^>(objData[1]);
+            String^ estado = safe_cast<String^>(objData[2]);
+            planta^ objPlanta = gcnew planta(id, maduracion, tipoPlanta, nombre, estado);
+            listaPlantas->Add(objPlanta);
 
         }
     }
@@ -132,32 +132,33 @@ List<Sensor^>^ SensorController::buscarId(int id) {
     cerrarConexion();
 
 
-    return listaSensores;
+    return listaPlantas;
 }
 
 
-void SensorController::eliminarSensor(int id) { //no estamos elimindoe el objeto sino desactivandolo
+void plantaController::eliminarPlanta(int id) {
     abrirConexion();
     SqlCommand^ objSentencia = gcnew SqlCommand();
     objSentencia->Connection = this->objConexion;
-    objSentencia->CommandText = "UPDATE Sensores SET Estado = @Estado WHERE Idsensor = @IdBuscar";
-    objSentencia->Parameters->AddWithValue("@Estado", "Desactivado");
+    objSentencia->CommandText = "UPDATE planta SET Estado = @Estado WHERE IdPlanta = @IdBuscar";
+    objSentencia->Parameters->AddWithValue("@Estado", "muerta");
     objSentencia->Parameters->AddWithValue("@IdBuscar", id);
     objSentencia->ExecuteNonQuery();
     cerrarConexion();
-}
-void SensorController::agregarSensor( String^ modelo, String^ categoria, String^ nombre, String^ Estado) {
 
+}
+
+void plantaController::agregarPlanta(String^ etapaMadurez, String^ estado, String^ tipoPlanta, String^ nombre) {
     abrirConexion();
     SqlCommand^ objSentencia = gcnew SqlCommand();
     objSentencia->Connection = this->objConexion;
     // Define la sentencia SQL de INSERT con un parámetro
-    objSentencia->CommandText = "INSERT INTO Sensores(Modelo,Nombre,Categoria,Estado) VALUES (@Modelo, @Nombre,@Categoria,@Estado)";
+    objSentencia->CommandText = "INSERT INTO planta(EtapaMadurez, Estado, TipoPlanta,Nombre) VALUES (@Madurez, @Estado,@TipoPlanta,@Nombre)";
 
     // Agrega el valor del parámetro
-    objSentencia->Parameters->AddWithValue("@Modelo", modelo);
-    objSentencia->Parameters->AddWithValue("@Categoria", categoria);
-    objSentencia->Parameters->AddWithValue("@Estado", Estado);
+    objSentencia->Parameters->AddWithValue("@Madurez", etapaMadurez);
+    objSentencia->Parameters->AddWithValue("@Estado", estado);
+    objSentencia->Parameters->AddWithValue("@TipoPlanta", tipoPlanta);
     objSentencia->Parameters->AddWithValue("@Nombre", nombre);
 
 
@@ -165,16 +166,16 @@ void SensorController::agregarSensor( String^ modelo, String^ categoria, String^
     objSentencia->ExecuteNonQuery();
     cerrarConexion();
 }
-void SensorController::editarSensor(int id,String^ modelo, String^ categoria, String^ nombre, String^ estado) {
+void plantaController::editarPlanta(int id, String^ etapaMadurez, String^ estado, String^ tipoPlanta, String^ nombre) {
     abrirConexion();
     SqlCommand^ objSentencia = gcnew SqlCommand();
     objSentencia->Connection = this->objConexion;
     // Define la sentencia SQL de INSERT con un parámetro
-    objSentencia->CommandText = "UPDATE Sensores SET Modelo = @Modelo, Categoria = @Categoria, Nombre = @Nombre,Estado = @Estado  WHERE Idsensor = @Id";
+    objSentencia->CommandText = "UPDATE planta SET EtapaMadurez = @EtapaMadurez, Estado = @Estado, TipoPlanta = @TipoPlanta,Nombre = @Nombre WHERE IdPlanta = @Id";
     // Agrega el valor del parámetro
-    objSentencia->Parameters->AddWithValue("@Modelo", modelo);
-    objSentencia->Parameters->AddWithValue("@Categoria", categoria);
+    objSentencia->Parameters->AddWithValue("@EtapaMadurez", etapaMadurez);
     objSentencia->Parameters->AddWithValue("@Estado", estado);
+    objSentencia->Parameters->AddWithValue("@TipoPlanta", tipoPlanta);
     objSentencia->Parameters->AddWithValue("@Nombre", nombre);
     objSentencia->Parameters->AddWithValue("@Id", id);
 
@@ -183,15 +184,17 @@ void SensorController::editarSensor(int id,String^ modelo, String^ categoria, St
     objSentencia->ExecuteNonQuery();
     cerrarConexion();
 }
-Sensor^ SensorController::buscarIdEditar(int id) {
+
+
+planta^ plantaController::buscarIdEditar(int id) {
     abrirConexion();
-    Sensor^ objSensor = nullptr;
+    planta^ objPlanta = nullptr;
     /*SqlCommand nos permite crear un objeto a través del cual voy a definir una sentencia SQL*/
     SqlCommand^ objSentencia = gcnew SqlCommand();
     /*Aqui estoy indicando que mi sentencia se va a ejecutar en esa conexion de base de datos*/
     objSentencia->Connection = this->objConexion;
     /*Aqui voy a definir la sentencia SQL que voy a ejecutar*/
-    objSentencia->CommandText = "SELECT * FROM Sensores where Idsensor = @Id";
+    objSentencia->CommandText = "SELECT * FROM planta where IdPlanta = @Id";
     objSentencia->Parameters->AddWithValue("@Id", id);
     /*Ahora para ejecutar voy a utilizar ExecuteReader cuando la sentencia es SELECT*/
     /*Para recuperar la informacion que me devuelve un select, utilizo SqlDataReader*/
@@ -199,23 +202,17 @@ Sensor^ SensorController::buscarIdEditar(int id) {
 
     if (objData->Read())
     {
-        int idSensor = safe_cast<int>(objData[0]);
-        String^ modelo = safe_cast<String^>(objData[1]);
-        String^ nombre = safe_cast<String^>(objData[2]);
-        String^ categoria = safe_cast<String^>(objData[3]);
-        String^ estado = safe_cast<String^>(objData[4]);
-        objSensor = gcnew Sensor(categoria, modelo, estado, nombre, idSensor);
+        int idPlanta = safe_cast<int>(objData[0]);
+        String^ etapaMadurez = safe_cast<String^>(objData[1]);
+        String^ estado = safe_cast<String^>(objData[2]);
+        String^ tipoPlanta = safe_cast<String^>(objData[3]);
+        String^ nombre = safe_cast<String^>(objData[4]);
+
+        objPlanta = gcnew planta(idPlanta, etapaMadurez, tipoPlanta, nombre, estado);
 
     }
-
-    objData->Close();
-    cerrarConexion();
-    return objSensor;
+ 
+        objData->Close();
+        cerrarConexion();
+        return objPlanta;
 }
-
-
-    
-
-
-
-

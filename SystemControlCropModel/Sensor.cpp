@@ -4,15 +4,11 @@ using namespace SystemControlCropModel;
 Sensor::Sensor() {
 
 }
-Sensor::Sensor(String^ categoria, double valorActual, int frecuencia, int voltajeOperacion, String^ fechaInstalacion, String^ proposito, planta^ plantas, String^ estado, int idsensor) {
+Sensor::Sensor(String^ categoria, String^ modelo, String^ estado, String^ nombre, int idsensor) {
 	this->categoria = categoria;
-	this->voltajeOperacion = voltajeOperacion;
-	this->valorActual = valorActual;
-	this->proposito = proposito;
-	this->fechaInstalacion = fechaInstalacion;
-	this->frecuencia = frecuencia;
-	this->plantas = plantas;
+	this->modelo = modelo;
 	this->estado = estado;
+	this->nombre = nombre;
 	this->idSensor = idsensor;
 
 }
@@ -23,48 +19,29 @@ void Sensor::setcategoria(String^ categoria) {
 	this->categoria = categoria;
 }
 
-double Sensor::getvalorActual() {
-	return this->valorActual;
-
+String^ Sensor::getModelo() {
+	return this->modelo;
 }
-void Sensor::setvalorActual(double valorActual) {
-	this->valorActual = valorActual;
-
-}
-int Sensor::getfrecuencia() {
-	return this->frecuencia;
-}
-void Sensor::setfrecuencia(int frecuencia) {
-	this->frecuencia = frecuencia;
-
-}
-String^ Sensor::getproposito() {
-	return this->proposito;
-}
-void Sensor::setproposito(String^ frecuencia) {
-	this->proposito = proposito;
+void Sensor::setModelo(String^ modelo) {
+	this->modelo = modelo;
 }
 
-int Sensor::getvoltajeOperacion() {
-	return this->voltajeOperacion;
+String^ Sensor::getNombre() {
+	return this->nombre;
 }
-void Sensor::setvoltajeOperacion(int voltajeOperacion) {
-	this->voltajeOperacion = voltajeOperacion;
-}
-String^ Sensor::getfechaInstalacion() {
-	return this->fechaInstalacion;
-}
-void Sensor::setfechaInstalacion(String^ fechaInstalacion) {
-	this->fechaInstalacion = fechaInstalacion;
+void Sensor::setNombre(String^ nombre) {
+	this->nombre = nombre;
 }
 
-planta^ Sensor::getPlanta() {
-	return this->plantas;
-}
+//planta^ Sensor::getPlanta() {
+//	return this->plantas;
+//}
+//
+//void Sensor::setPlanta(planta^ plantas) {
+//	this->plantas = plantas;
+//}
 
-void Sensor::setPlanta(planta^ planta) {
-	this->plantas = plantas;
-}
+
 String^ Sensor::getEstado() {
 	return this->estado;
 }

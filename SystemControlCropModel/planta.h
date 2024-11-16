@@ -8,40 +8,41 @@ namespace SystemControlCropModel {
     {
     protected:
         int idplanta;
-        String^ faseCrecimiento;
-        String^ tipoRiego;
-        String^ tiempoCosecha;
         String^ etapaMadurez;
-        List<Requerimiento^>^ listaRequerimientos;
+        String^ tipoPlanta;
+        String^ nombre;
+        String^ estado;
+        Requerimiento^ Requerimientos;
 
     public:
 
         // Constructores
         planta();
-        planta(int idplanta, String^ faseCrecimiento, String^ tipoRiego, String^ tiempoCosecha, String^ etapaMadurez, List<Requerimiento^>^ listaRequerimientos);
+        planta(int idplanta, String^ etapaMadurez, String^ tipoPlanta, String^ nombre, String^ estado);
+
+        //Requerimiento^ Requerimientos
 
         // Mtodos Getters y Setters para idplanta
         int getidplanta();
         void setidplanta(int idplanta);
 
-        // Mtodos Getters y Setters para faseCrecimiento
-        String^ getfaseCrecimiento();
-        void setfaseCrecimiento(String^ faseCrecimiento);
-
-        // Mtodos Getters y Setters para tipoRiego
-        String^ gettipoRiego();
-        void settipoRiego(String^ tipoRiego);
-
-        // Mtodos Getters y Setters para tiempoCosecha
-        String^ gettiempoCosecha();
-        void settiempoCosecha(String^ tiempoCosecha);
 
         // mtodos Getters y Setters para etapaMadurez
         String^ getetapaMadurez();
         void setetapaMadurez(String^ etapaMadurez);
 
-        List<Requerimiento^>^ getListaRequerimientos();
-        void setListaRequerimientos(List<Requerimiento^>^ listaRequerimientos);
+        String^ getEstado();
+        void setEstado(String^ estado);
+
+
+        String^ getNombre();
+        void setNombre(String^ nombre);
+
+        String^ getTipoPlanta();
+        void setTipoPlanta(String^ tipoPlanta);
+
+        Requerimiento^ getRequerimientos();
+        void setRequerimientos(Requerimiento^ Requerimientos);
     };
 
 }

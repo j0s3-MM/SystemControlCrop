@@ -6,32 +6,18 @@ namespace SystemControlCropModel {
     public ref class sensorTemperatura :Sensor
     {
     protected:
-        String^ rangopOperacion;
-        double voltajeSalida;
-        int idSensor;
-        int factorConversion;
+        int temperatura;
 
     public:
 
         // Constructores
         sensorTemperatura();
-        sensorTemperatura(String^ categoria, double valorActual, int frecuencia, int voltajeOperacion, String^ fechaInstalacion, String^ proposito, planta^ plantas, String^ rangopOperacion, double voltajeSalida, int idSensor, int factorConversion);
-
-        // Mtodos Getters y Setters para rangopOperacion
-        String^ getrangopOperacion();
-        void setrangopOperacion(String^ rangopOperacion);
-
-        // Mtodos Getters y Setters para voltajeSalida
-        double getvoltajeSalida();
-        void setvoltajeSalida(double voltajeSalida);
+        sensorTemperatura(String^ categoria, String^ modelo, String^ estado, String^ nombre, int idSensor, int temperatura);
 
         // Mtodos Getters y Setters para idSensor
-        int getidSensor();
-        void setidSensor(int idSensor);
+        int getTemperatura();
+        void setTemperatura(int temperatura);
 
-        // Mtodos Getters y Setters para factorConversion
-        int getfactorConversion();
-        void setfactorConversion(int factorConversion);
     };
 
 }

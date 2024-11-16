@@ -1,6 +1,6 @@
 #pragma once
 #include "dimensiones.h"
-#include "Componentes.h"
+#include "planta.h"
 namespace SystemControlCropModel {
 	// test1
 	using namespace System;
@@ -8,38 +8,29 @@ namespace SystemControlCropModel {
 
 	public ref class invernadero {
 	private:
-		String^ ubicacion;
-		String^ tipoDeSuelo;
-		String^ cultivo;
-		int IdLote;
-		String^ Sustrato;
-		int area;
-		Dimensiones^ dimensiones;
-		List<Componentes^>^ listaComponentes;
+		String^ ubicacion; //paint
+		List<planta^>^ listaPlantas; 
+		int densidad; //paint
+		Dimensiones^ dimensiones; //paint 3d mostrando las dimensioens
+	
+
 
 	public:
 		invernadero();
-		invernadero(String^ ubicacion, String^ tipoDeSuelo, String^ cultivo, int IdLote, String^ Sustrato, int area, Dimensiones^ dimensiones, List<Componentes^>^ listaComponentes);
+		invernadero(String^ ubicacion, int densidad, Dimensiones^ dimensiones);
 
 		String^ getUbicacion();
 		void setUbicacion(String^ ubicacion);
-		String^ getTipoDeSuelo();
-		void setTipoDeSuelo(String^ tipoDeSuelo);
-		String^ getCultivo();
-		void setCultivo(String^ cultivo);
-		int getIdLote();
-		void setIdLote(int IdLote);
-		String^ getSustrato();
-		void setSustrato(String^ Sustrato);
-		int getArea();
-		void setArea(int area);
 
+		int getDensidad();
+		void setDensidad(int densidad);
 
 		Dimensiones^ getDimensiones();
 		void setDimensiones(Dimensiones^ dimensiones);
-		List<Componentes^>^ getListaComponentes();
-		void setListaComponentes(List<Componentes^>^ listaComponentes);
 
+
+		/*List<planta^>^ getListaPlanta();
+		void setListaPlanta(List<planta^>^ listaPlantas);*/
 	};
 
 

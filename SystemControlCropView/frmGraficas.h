@@ -81,10 +81,13 @@ namespace SystemControlCropView {
 			this->Controls->Add(this->chart1);
 			this->Name = L"frmGraficas";
 			this->Text = L"frmGraficas";
+			this->Load += gcnew System::EventHandler(this, &frmGraficas::frmGraficas_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->EndInit();
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
+	private: System::Void frmGraficas_Load(System::Object^ sender, System::EventArgs^ e) {
+	}
 	};
 }

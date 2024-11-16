@@ -9,41 +9,28 @@ namespace SystemControlCropModel {
 	protected:
 
 		String^ categoria;
-		double valorActual;
-		int frecuencia;
-		int voltajeOperacion;
-		String^ fechaInstalacion;
-		String^ proposito;
-		planta^ plantas;
+		//planta^ plantas;
 		String^ estado;
+		String^ nombre;
+		String^ modelo;
 		int idSensor;
 
 	public:
 
 		Sensor();
-		Sensor(String^ categoria, double valorActual, int frecuencia, int voltajeOperacion, String^ fechaInstalacion, String^ proposito, planta^ plantas, String^ estado, int idSensor);
+		Sensor(String^ categoria, String^ modelo, String^ estado, String^ nombre, int idSensor);
 
+		String^ getModelo();
+		void setModelo(String^ proposito);
 
-		double getvalorActual();
-		void setvalorActual(double valorActual);
-
-		int getfrecuencia();
-		void setfrecuencia(int frecuencia);
-
-		int getvoltajeOperacion();
-		void setvoltajeOperacion(int voltajeOperacion);
-
-		String^ getfechaInstalacion();
-		void setfechaInstalacion(String^ fechaInstalacion);
-
-		String^ getproposito();
-		void setproposito(String^ proposito);
+		String^ getNombre();
+		void setNombre(String^ nombre);
 
 		String^ getcategoria();
 		void setcategoria(String^ proposito);
 
-		planta^ getPlanta();
-		void setPlanta(planta^ planta);
+		//planta^ getPlanta();
+		//void setPlanta(planta^ planta);
 
 		String^ getEstado();
 		void setEstado(String^ estado);

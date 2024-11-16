@@ -111,10 +111,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="adminController.cpp" />
     <ClCompile Include="cultivoController.cpp" />
-    <ClCompile Include="InvernaderoController.cpp" />
-    <ClCompile Include="ReporteConsumoXInvernaderoController.cpp" />
+    <ClCompile Include="plantaController.cpp" />
     <ClCompile Include="sensorController.cpp" />
     <ClCompile Include="usuarioController.cpp" />
   </ItemGroup>
@@ -124,10 +122,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="adminController.h" />
     <ClInclude Include="cultivoController.h" />
-    <ClInclude Include="InvernaderoController.h" />
-    <ClInclude Include="ReporteConsumoXInvernaderoController.h" />
+    <ClInclude Include="plantaController.h" />
     <ClInclude Include="sensorController.h" />
     <ClInclude Include="usuarioController.h" />
   </ItemGroup>

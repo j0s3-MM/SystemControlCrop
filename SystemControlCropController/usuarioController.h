@@ -1,16 +1,19 @@
 #pragma once
 namespace SystemControlCropController {
 	using namespace System;
+	using namespace System::Data::SqlClient; /*Esta es la libreria que contiene al SqlConnection*/
 	using namespace System::Collections::Generic;
 	using namespace SystemControlCropModel;
 
 	public ref class UsuarioController {
+		private:
+			SqlConnection^ objConexion;
+
 		public:
 			UsuarioController();
-			int verificarUser(String^ usernanme, String^ contrasena);
-			void newUser(int idPersona, String^ nombre, int edad, String^ sexo, String^ contraseña);
-			void escribirArchivo(List<Usuario^>^ listaUsuarios);
-			List<Usuario^>^ buscarAll();
-			List<Usuario^>^ buscarXdni(int idPersonabuscado);
+			void abrirConexion();
+			void cerrarConexion();
+			int verificarUser(int DNI, String^ Contraseña);
+			int Registrarse(int DNI, String^ Contraseña);
 	};
 }

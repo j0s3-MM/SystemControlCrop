@@ -3,26 +3,26 @@ using namespace SystemControlCropModel;
 
 // Constructor por defecto
 planta::planta() {
-    this->listaRequerimientos = gcnew List<Requerimiento^>();
 }
 
 // Constructor parametrizado
-planta::planta(int idplanta, String^ faseCrecimiento, String^ tipoRiego, String^ tiempoCosecha, String^ etapaMadurez, List<Requerimiento^>^ listaRequerimientos) {
+planta::planta(int idplanta, String^ etapaMadurez, String^ tipoPlanta, String^ nombre, String^ estado){
     this->idplanta = idplanta;
-    this->faseCrecimiento = faseCrecimiento;
-    this->tipoRiego = tipoRiego;
-    this->tiempoCosecha = tiempoCosecha;
     this->etapaMadurez = etapaMadurez;
-    this->listaRequerimientos = listaRequerimientos;  
+    this->nombre = nombre;
+    this->tipoPlanta = tipoPlanta;
+    this->estado = estado;
+    //this->Requerimientos = Requerimientos;
+    // , Requerimiento^ Requerimientos 
 
 }
 
-List<Requerimiento^>^ planta::getListaRequerimientos() {
-    return this->listaRequerimientos;
+Requerimiento^ planta::getRequerimientos() {
+    return this->Requerimientos;
 }
 
-void planta::setListaRequerimientos(List<Requerimiento^>^ listaRequerimientos) {
-    this->listaRequerimientos = listaRequerimientos;
+void planta::setRequerimientos(Requerimiento^ Requerimientos) {
+    this->Requerimientos = Requerimientos;
 }
 // Getter y Setter para idplanta
 int planta::getidplanta() {
@@ -32,35 +32,6 @@ int planta::getidplanta() {
 void planta::setidplanta(int idplanta) {
     this->idplanta = idplanta;
 }
-
-// Getter y Setter para faseCrecimiento
-String^ planta::getfaseCrecimiento() {
-    return this->faseCrecimiento;
-}
-
-void planta::setfaseCrecimiento(String^ faseCrecimiento) {
-    this->faseCrecimiento = faseCrecimiento;
-}
-
-// Getter y Setter para tipoRiego
-String^ planta::gettipoRiego() {
-    return this->tipoRiego;
-}
-
-void planta::settipoRiego(String^ tipoRiego) {
-    this->tipoRiego = tipoRiego;
-}
-
-// Getter y Setter para tiempoCosecha
-
-String^ planta::gettiempoCosecha() {
-    return this->tiempoCosecha; 
-}
-
-void planta::settiempoCosecha(String^ tiempoCosecha) {
-    this->tiempoCosecha = tiempoCosecha;
-}
-
 // Getter y Setter para etapaMadurez
 String^ planta::getetapaMadurez() {
     return this->etapaMadurez;
@@ -68,4 +39,28 @@ String^ planta::getetapaMadurez() {
 
 void planta::setetapaMadurez(String^ etapaMadurez) {
     this->etapaMadurez = etapaMadurez;
+}
+
+String^ planta::getTipoPlanta() {
+    return this->tipoPlanta;
+}
+
+void planta::setTipoPlanta(String^ tipoPlanta) {
+    this->tipoPlanta = tipoPlanta;
+}
+
+String^ planta::getEstado() {
+    return this->estado;
+}
+
+void planta::setEstado(String^ estado) {
+    this->estado = estado;
+}
+
+String^ planta::getNombre() {
+    return this->nombre;
+}
+
+void planta::setNombre(String^ nombre) {
+    this->nombre = nombre;
 }

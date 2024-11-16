@@ -1,7 +1,6 @@
 #pragma once
-#include "Invernadero.h"
 #include "newUser.h"
-#include "AccessAdmin.h"
+#include "editAdminInvernadero.h"
 
 namespace SystemControlCropView {
 
@@ -47,9 +46,10 @@ namespace SystemControlCropView {
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::Button^ acceder;
+
 	private: System::Windows::Forms::Button^ registrarse;
 	private: System::Windows::Forms::Button^ accesadmin;
+
 
 
 
@@ -68,21 +68,20 @@ namespace SystemControlCropView {
 		void InitializeComponent(void)
 		{
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->acceder = (gcnew System::Windows::Forms::Button());
 			this->registrarse = (gcnew System::Windows::Forms::Button());
+			this->accesadmin = (gcnew System::Windows::Forms::Button());
 			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->accesadmin = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// groupBox1
 			// 
-			this->groupBox1->Controls->Add(this->acceder);
 			this->groupBox1->Controls->Add(this->registrarse);
+			this->groupBox1->Controls->Add(this->accesadmin);
 			this->groupBox1->Controls->Add(this->textBox2);
 			this->groupBox1->Controls->Add(this->textBox1);
 			this->groupBox1->Controls->Add(this->label3);
@@ -94,18 +93,6 @@ namespace SystemControlCropView {
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Login";
 			// 
-			// acceder
-			// 
-			this->acceder->BackColor = System::Drawing::SystemColors::MenuHighlight;
-			this->acceder->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->acceder->Location = System::Drawing::Point(241, 298);
-			this->acceder->Name = L"acceder";
-			this->acceder->Size = System::Drawing::Size(103, 32);
-			this->acceder->TabIndex = 5;
-			this->acceder->Text = L"Acceder";
-			this->acceder->UseVisualStyleBackColor = false;
-			this->acceder->Click += gcnew System::EventHandler(this, &frmPrincipal::button2_Click);
-			// 
 			// registrarse
 			// 
 			this->registrarse->Location = System::Drawing::Point(72, 299);
@@ -115,6 +102,17 @@ namespace SystemControlCropView {
 			this->registrarse->Text = L"Registrarse";
 			this->registrarse->UseVisualStyleBackColor = true;
 			this->registrarse->Click += gcnew System::EventHandler(this, &frmPrincipal::registrarse_Click);
+			// 
+			// accesadmin
+			// 
+			this->accesadmin->ForeColor = System::Drawing::SystemColors::MenuHighlight;
+			this->accesadmin->Location = System::Drawing::Point(227, 299);
+			this->accesadmin->Name = L"accesadmin";
+			this->accesadmin->Size = System::Drawing::Size(117, 31);
+			this->accesadmin->TabIndex = 2;
+			this->accesadmin->Text = L"Acceder";
+			this->accesadmin->UseVisualStyleBackColor = true;
+			this->accesadmin->Click += gcnew System::EventHandler(this, &frmPrincipal::accesadmin_Click);
 			// 
 			// textBox2
 			// 
@@ -164,27 +162,15 @@ namespace SystemControlCropView {
 			this->label1->TabIndex = 1;
 			this->label1->Text = L"TERRA";
 			// 
-			// accesadmin
-			// 
-			this->accesadmin->ForeColor = System::Drawing::SystemColors::MenuHighlight;
-			this->accesadmin->Location = System::Drawing::Point(528, 613);
-			this->accesadmin->Name = L"accesadmin";
-			this->accesadmin->Size = System::Drawing::Size(267, 28);
-			this->accesadmin->TabIndex = 2;
-			this->accesadmin->Text = L"Acceder Como Administrador";
-			this->accesadmin->UseVisualStyleBackColor = true;
-			this->accesadmin->Click += gcnew System::EventHandler(this, &frmPrincipal::accesadmin_Click);
-			// 
 			// frmPrincipal
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1531, 845);
-			this->Controls->Add(this->accesadmin);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->groupBox1);
 			this->Name = L"frmPrincipal";
-			this->Text = L"frmPrincipal";
+			this->Text = L"Sistema de Control de Invernadero";
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			this->ResumeLayout(false);
@@ -193,28 +179,26 @@ namespace SystemControlCropView {
 		}
 #pragma endregion
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-		String^ username = this->textBox1->Text;
+	}
+
+	private: System::Void registrarse_Click(System::Object^ sender, System::EventArgs^ e) {
+		newUser^ ventanaRegistro = gcnew newUser();
+		ventanaRegistro->Show();
+	}
+	private: System::Void accesadmin_Click(System::Object^ sender, System::EventArgs^ e) {
+		int username = Convert::ToInt64(this->textBox1->Text);
 		String^ contrasena = this->textBox2->Text;
 		int verificado = 0;
 		UsuarioController^ usuarioController = gcnew UsuarioController();
-		verificado = usuarioController->verificarUser(username,contrasena);
+		verificado = usuarioController->verificarUser(username, contrasena);
 		if (verificado) {
-			Invernadero^ ventanaInvernadero = gcnew Invernadero();
-			ventanaInvernadero->Show();
+			editAdminInvernadero^ ventanaAdmin = gcnew editAdminInvernadero();
+			ventanaAdmin->Show();
 		}
 		else {
 			MessageBox::Show("Acceso Denegado, Usuario no encontrado", "Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 			return; // Salir del evento si no se encontro usuario registrado
 		}
-
-	}
-	private: System::Void registrarse_Click(System::Object^ sender, System::EventArgs^ e) {
-		newUser^ ventanaRegistro = gcnew newUser();
-		ventanaRegistro->Show();
-	}
-	private: System::Void accesadmin_Click(System::Object^ sender, System::EventArgs^ e) {		
-		AccessAdmin^ ventanaAdmin = gcnew AccessAdmin();
-		ventanaAdmin->Show();
 	}
 };
 }

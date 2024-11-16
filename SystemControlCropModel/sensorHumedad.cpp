@@ -2,61 +2,21 @@
 using namespace SystemControlCropModel;
 
 // Constructor por defecto
-sensorHumedad::sensorHumedad() :Sensor() {
+sensorHumedadAire::sensorHumedadAire():Sensor() {
 }
 
 // Constructor parametrizado
-sensorHumedad::sensorHumedad(String^ categoria, double valorActual, int frecuencia, int voltajeOperacion, String^ fechaInstalacion, String^ proposito, planta^ plantas, int humedadActual, bool estadoUmbral, int configResistencia, int humedadLimite, String^ tipoSalida) : Sensor(categoria, valorActual, frecuencia, voltajeOperacion, fechaInstalacion, proposito, plantas, estado, idSensor){
-    this->humedadActual = humedadActual;
-    this->estadoUmbral = estadoUmbral;
-    this->configResistencia = configResistencia;
-    this->humedadLimite = humedadLimite;
-    this->tipoSalida = tipoSalida;
+sensorHumedadAire::sensorHumedadAire(String^ categoria, String^ modelo, String^ estado, String^ nombre, int idSensor, int humedadRelativaAire) : Sensor(categoria, modelo, estado,nombre,idSensor){
+    this->humedadRelativaAire = humedadRelativaAire;
 }
 
 // Getter y Setter para idSensor
 
 // Getter y Setter para humedadActual
-int sensorHumedad::gethumedadActual() {
-    return this->humedadActual;
+int sensorHumedadAire::getHumedadRelativaAire() {
+    return this->humedadRelativaAire;
 }
 
-void sensorHumedad::sethumedadActual(int humedadActual) {
-    this->humedadActual = humedadActual;
-}
-
-// Getter y Setter para estadoUmbral
-bool sensorHumedad::getestadoUmbral() {
-    return this->estadoUmbral;
-}
-
-void sensorHumedad::setestadoUmbral(bool estadoUmbral) {
-    this->estadoUmbral = estadoUmbral;
-}
-
-// Getter y Setter para configResistencia
-int sensorHumedad::getconfigResistencia() {
-    return this->configResistencia;
-}
-
-void sensorHumedad::setconfigResistencia(int configResistencia) {
-    this->configResistencia = configResistencia;
-}
-
-// Getter y Setter para humedadLimite
-int sensorHumedad::gethumedadLimite() {
-    return this->humedadLimite;
-}
-
-void sensorHumedad::sethumedadLimite(int humedadLimite) {
-    this->humedadLimite = humedadLimite;
-}
-
-// Getter y Setter para tipoSalida
-String^ sensorHumedad::gettipoSalida() {
-    return this->tipoSalida;
-}
-
-void sensorHumedad::settipoSalida(String^ tipoSalida) {
-    this->tipoSalida = tipoSalida;
+void sensorHumedadAire::setHumedadRelativaAire(int humedadRelativaAire) {
+    this->humedadRelativaAire = humedadRelativaAire;
 }

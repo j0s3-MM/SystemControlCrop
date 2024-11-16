@@ -12,21 +12,21 @@ Dimensiones::Dimensiones(int altura, int ancho, int largo) {
 	this->largo = largo;
 }
 
-int Dimensiones::setAltura() {
+int Dimensiones::getAltura() {
 	return this->altura;
 }
-void Dimensiones::getAltura(int altura) {
+void Dimensiones::setAltura(int altura) {
 	this->altura = altura;
 }
-int Dimensiones::setAncho() {
+int Dimensiones::getAncho() {
 	return this->ancho;
 }
-void Dimensiones::getAncho(int ancho) {
+void Dimensiones::setAncho(int ancho) {
 	this->ancho = ancho;
 }
-int Dimensiones::setLargo() {
+int Dimensiones::getLargo() {
 	return this->largo;
 }
-void Dimensiones::getLargo(int largo) {
+void Dimensiones::setLargo(int largo) {
 	this->largo = largo;
 }

@@ -111,56 +111,33 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="actuador.h" />
-    <ClInclude Include="administrador.h" />
-    <ClInclude Include="bomba.h" />
-    <ClInclude Include="cintaRiego.h" />
-    <ClInclude Include="Componentes.h" />
     <ClInclude Include="dimensiones.h" />
-    <ClInclude Include="fruta.h" />
-    <ClInclude Include="GrafConsumoAguaxInvernadero.h" />
+    <ClInclude Include="estadistica.h" />
     <ClInclude Include="invernadero.h" />
-    <ClInclude Include="LucesLed.h" />
-    <ClInclude Include="microcontrolador.h" />
-    <ClInclude Include="observador.h" />
     <ClInclude Include="planta.h" />
+    <ClInclude Include="ReporteTempxTiempo.h" />
     <ClInclude Include="requerimiento.h" />
     <ClInclude Include="Sensor.h" />
-    <ClInclude Include="sensorGas.h" />
     <ClInclude Include="sensorHumedad.h" />
+    <ClInclude Include="sensorHumedadSuelo.h" />
     <ClInclude Include="sensorTemperatura.h" />
-    <ClInclude Include="Tanque.h" />
-    <ClInclude Include="tuberia.h" />
     <ClInclude Include="Usuario.h" />
-    <ClInclude Include="valvula.h" />
-    <ClInclude Include="ventilador.h" />
-    <ClInclude Include="verdura.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="actuador.cpp" />
-    <ClCompile Include="administrador.cpp" />
-    <ClCompile Include="bomba.cpp" />
-    <ClCompile Include="cintaRiego.cpp" />
-    <ClCompile Include="Componentes.cpp" />
     <ClCompile Include="dimensiones.cpp" />
-    <ClCompile Include="fruta.cpp" />
-    <ClCompile Include="GrafConsumoAguaxInvernadero.cpp" />
+    <ClCompile Include="estadistica.cpp" />
     <ClCompile Include="invernadero.cpp" />
-    <ClCompile Include="LucesLed.cpp" />
-    <ClCompile Include="microcontrolador.cpp" />
-    <ClCompile Include="observador.cpp" />
     <ClCompile Include="planta.cpp" />
+    <ClCompile Include="ReporteTempxTiempo.cpp" />
     <ClCompile Include="requerimiento.cpp" />
     <ClCompile Include="Sensor.cpp" />
-    <ClCompile Include="sensorGas.cpp" />
     <ClCompile Include="sensorHumedad.cpp" />
+    <ClCompile Include="sensorHumedadSuelo.cpp" />
     <ClCompile Include="sensorTemperatura.cpp" />
-    <ClCompile Include="Tanque.cpp" />
-    <ClCompile Include="Tuberia.cpp" />
     <ClCompile Include="Usuario.cpp" />
-    <ClCompile Include="valvula.cpp" />
-    <ClCompile Include="ventilador.cpp" />
-    <ClCompile Include="verdura.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Drawing" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -3,42 +3,21 @@
 namespace SystemControlCropModel {
 
     using namespace System;
-    public ref class sensorHumedad :Sensor
+    public ref class sensorHumedadAire :Sensor
     {
     protected:
-        int humedadActual;
-        bool estadoUmbral;
-        int configResistencia;
-        int humedadLimite;
-        String^ tipoSalida;
+        int humedadRelativaAire;
 
     public:
 
         // Constructores
-        sensorHumedad();
-        sensorHumedad(String^ categoria, double valorActual, int frecuencia, int voltajeOperacion, String^ fechaInstalacion, String^ proposito, planta^ plantas, int humedadActual, bool estadoUmbral, int configResistencia, int humedadLimite, String^ tipoSalida);
+        sensorHumedadAire();
+        sensorHumedadAire(String^ categoria, String^ modelo, String^ estado, String^ nombre, int idSensor, int humedadRelativaAire);
 
-        // Mtodos Getters y Setters para idSensor
 
         // Mtodos Getters y Setters para humedadActual
-        int gethumedadActual();
-        void sethumedadActual(int humedadActual);
-
-        // Mtodos Getters y Setters para estadoUmbral
-        bool getestadoUmbral();
-        void setestadoUmbral(bool estadoUmbral);
-
-        // Mtodos Getters y Setters para configResistencia
-        int getconfigResistencia();
-        void setconfigResistencia(int configResistencia);
-
-        // Mtodos Getters y Setters para humedadLimite
-        int gethumedadLimite();
-        void sethumedadLimite(int humedadLimite);
-
-        // Mtodos Getters y Setters para tipoSalida
-        String^ gettipoSalida();
-        void settipoSalida(String^ tipoSalida);
+        int getHumedadRelativaAire();
+        void setHumedadRelativaAire(int humedadRelativaAire);
     };
 
 }

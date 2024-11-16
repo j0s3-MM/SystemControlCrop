@@ -6,55 +6,45 @@ Requerimiento::Requerimiento() {
 }
 
 // Constructor parametrizado
-Requerimiento::Requerimiento(int cantidadAgua, int humedadRequerida, int temperaturaIdeal, String^ tipoSuelo, int horasLuz) {
-    this->cantidadAgua = cantidadAgua;
-    this->humedadRequerida = humedadRequerida;
+Requerimiento::Requerimiento(int humedadIdealAire, int humedadIdealSuelo, int temperaturaIdeal, int horasLuz){
+    this->humedadIdealAire = humedadIdealAire;
+    this->humedadIdealSuelo = humedadIdealSuelo;
     this->temperaturaIdeal = temperaturaIdeal;
-    this->tipoSuelo = tipoSuelo;
     this->horasLuz = horasLuz;
 }
 
 // Getter y Setter para cantidadAgua
-int Requerimiento::getcantidadAgua() {
-    return this->cantidadAgua;
+int Requerimiento::getHumedadIdealAire() {
+    return this->humedadIdealAire;
 }
 
-void Requerimiento::setcantidadAgua(int cantidadAgua) {
-    this->cantidadAgua = cantidadAgua;
+void Requerimiento::setHumedadIdealAire(int humedadIdealAire) {
+    this->humedadIdealAire = humedadIdealAire;
 }
 
 // Getter y Setter para humedadRequerida
-int Requerimiento::gethumedadRequerida() {
-    return this->humedadRequerida;
+int Requerimiento::getHumedadIdealSuelo() {
+    return this->humedadIdealSuelo;
 }
 
-void Requerimiento::sethumedadRequerida(int humedadRequerida) {
-    this->humedadRequerida = humedadRequerida;
+void Requerimiento::setHumedadIdealSuelo(int humedadIdealSuelo) {
+    this->humedadIdealSuelo = humedadIdealSuelo;
 }
 
 // Getter y Setter para temperaturaIdeal
-int Requerimiento::gettemperaturaIdeal() {
+int Requerimiento::getTemperaturaIdeal() {
     return this->temperaturaIdeal;
 }
 
-void Requerimiento::settemperaturaIdeal(int temperaturaIdeal) {
+void Requerimiento::setTemperaturaIdeal(int temperaturaIdeal) {
     this->temperaturaIdeal = temperaturaIdeal;
 }
 
-// Getter y Setter para tipoSuelo
-String^ Requerimiento::gettipoSuelo() {
-    return this->tipoSuelo;
-}
-
-void Requerimiento::settipoSuelo(String^ tipoSuelo) {
-    this->tipoSuelo = tipoSuelo;
-}
-
 // Getter y Setter para horasLuz
-int Requerimiento::gethorasLuz() {
+int Requerimiento::getHorasLuz() {
     return this->horasLuz;
 }
 
-void Requerimiento::sethorasLuz(int horasLuz) {
+void Requerimiento::setHorasLuz(int horasLuz) {
     this->horasLuz = horasLuz;
 }
