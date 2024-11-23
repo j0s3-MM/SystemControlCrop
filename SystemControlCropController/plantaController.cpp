@@ -38,7 +38,7 @@ List<planta^>^ plantaController::buscarAll() {
         String^ tipoPlanta = safe_cast<String^>(objData[3]);
         String^ maduracion = safe_cast<String^>(objData[1]);
         String^ estado = safe_cast<String^>(objData[2]);
-        int codReq = safe_cast<int>(objData[5]);
+        //int codReq = safe_cast<int>(objData[5]);
 
         planta^ objPlanta = gcnew planta(id, maduracion, tipoPlanta, nombre, estado);
         // objrequer controller
